@@ -29,7 +29,53 @@ enum Resources {
     }
     
     enum Font {
+        static func robotoMedium(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Medium", size: size)!
+        }
         
+        static func robotoLight(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Light", size: size)!
+        }
+        
+        static func robotoRegular(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Regular", size: size)!
+        }
+        
+        static func robotoMediumItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-MediumItalic", size: size)!
+        }
+        
+        static func robotoThinItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-ThinItalic", size: size)!
+        }
+        
+        static func robotoBoldItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-BoldItalic", size: size)!
+        }
+        
+        static func robotoLightItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-LightItalic", size: size)!
+        }
+        
+        static func robotoItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Italic", size: size)!
+        }
+        
+        static func robotoBlackItalic(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-BlackItalic", size: size)!
+        }
+        
+        static func robotoBold(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Bold", size: size)!
+        }
+        
+        static func robotoThin(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Thin", size: size)!
+        }
+        
+        static func robotoBlack(_ size: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Black", size: size)!
+        }
     }
 }
 
