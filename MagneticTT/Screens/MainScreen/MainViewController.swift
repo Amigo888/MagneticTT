@@ -16,7 +16,63 @@ final class MainViewController: UIViewController {
         return imageView
     }()
     
-    //    private lazy var
+    private lazy var currentWiFiLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "Current Wi-Fi"
+        label.font = .systemFont(ofSize: 15)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var wiFiNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "WIFI_Name"
+        label.font = .systemFont(ofSize: 28)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var readyScanLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "Ready to Scan this network"
+        label.font = .systemFont(ofSize: 17)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var scanButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.setTitle("Scan current network", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.layer.cornerRadius = 32
+        button.titleLabel?.textColor = .white
+        return button
+    }()
+    
+    private lazy var stackViewBackground: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .infoWiFiBackground
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            currentWiFiLabel,
+            wiFiNameLabel,
+            readyScanLabel,
+            scanButton
+        ])
+        stackView.setCustomSpacing(0, after: currentWiFiLabel)
+        stackView.setCustomSpacing(16, after: wiFiNameLabel)
+        stackView.setCustomSpacing(8, after: readyScanLabel)
+        stackView.axis = .vertical
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +96,8 @@ final class MainViewController: UIViewController {
     
     private func addViews() {
         view.addSubview(mainImage)
+        view.addSubview(stackViewBackground)
+        stackViewBackground.addSubview(stackView)
     }
     
     private func setupConstraints() {
@@ -47,14 +105,24 @@ final class MainViewController: UIViewController {
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(329)
         }
+        
+        stackViewBackground.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(198)
+            make.top.equalTo(mainImage.snp.bottom).inset(30)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.bottom.equalToSuperview().inset(24)
+        }
+        
+        scanButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
     }
     
     @objc private func settingButtonTapped() {
-        
+        print("hi")
     }
 }
-
-//#Preview {
-//    let mainVC = MainViewController()
-//    return mainVC
-//}

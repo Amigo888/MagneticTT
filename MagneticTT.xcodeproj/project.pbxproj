@@ -62,6 +62,7 @@
 		5F73FD392BB9D35600556D65 /* MagneticTT */ = {
 			isa = PBXGroup;
 			children = (
+				5F73FD7E2BB9EF3E00556D65 /* CustomView */,
 				5F73FD502BB9D68B00556D65 /* Screens */,
 				5F73FD4E2BB9D65200556D65 /* Application */,
 			);
@@ -120,6 +121,13 @@
 				5F73FD452BB9D35700556D65 /* LaunchScreen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		5F73FD7E2BB9EF3E00556D65 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
