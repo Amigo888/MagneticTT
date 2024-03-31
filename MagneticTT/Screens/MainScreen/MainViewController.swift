@@ -13,6 +13,7 @@ final class MainViewController: UIViewController {
     private lazy var mainImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Resources.Image.mainImage.image
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -48,7 +49,7 @@ final class MainViewController: UIViewController {
         button.backgroundColor = .red
         button.setTitle("Scan current network", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20)
-        button.layer.cornerRadius = 32
+        button.layer.cornerRadius = 25
         button.titleLabel?.textColor = .white
         return button
     }()
@@ -74,6 +75,24 @@ final class MainViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var customFlowLayout: UICollectionViewFlowLayout = {
+        let customFlowLayout = UICollectionViewFlowLayout()
+        customFlowLayout.itemSize = CGSize(width: 140, height: 140)
+        customFlowLayout.minimumInteritemSpacing = 38
+        customFlowLayout.minimumLineSpacing = 35
+        return customFlowLayout
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: customFlowLayout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.isScrollEnabled = false
+        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: String(describing: CustomCell.self))
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -87,9 +106,7 @@ final class MainViewController: UIViewController {
     }
     
     private func setupHeader() {
-        let filterImage = Resources.Image.filterButton.image?.withRenderingMode(.alwaysTemplate)
-        filterImage?.withTintColor(.red)
-        filterImage?.withTintColor(.white)
+        let filterImage = Resources.Image.filterButton.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
         let filterButton = UIBarButtonItem(image: filterImage, style: .done, target: self, action: #selector(settingButtonTapped))
         navigationItem.rightBarButtonItem = filterButton
     }
@@ -98,6 +115,7 @@ final class MainViewController: UIViewController {
         view.addSubview(mainImage)
         view.addSubview(stackViewBackground)
         stackViewBackground.addSubview(stackView)
+        view.addSubview(collectionView)
     }
     
     private func setupConstraints() {
@@ -109,7 +127,7 @@ final class MainViewController: UIViewController {
         stackViewBackground.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(198)
-            make.top.equalTo(mainImage.snp.bottom).inset(30)
+            make.top.equalTo(mainImage.snp.bottom).inset(40)
         }
         
         stackView.snp.makeConstraints { make in
@@ -120,9 +138,34 @@ final class MainViewController: UIViewController {
         scanButton.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(stackViewBackground.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(36)
+            make.bottom.equalToSuperview()
+        }
     }
     
     @objc private func settingButtonTapped() {
         print("hi")
+    }
+}
+
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: CustomCell.self),
+            for: indexPath
+        ) as? CustomCell else {
+            return UICollectionViewCell()
+        }
+        cell.backgroundColor = .red
+        return cell
     }
 }
