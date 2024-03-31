@@ -165,7 +165,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         ) as? CustomCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .red
+        cell.configureCell()
         return cell
     }
 }

@@ -10,4 +10,5 @@ import UIKit
 extension UIColor {
     static let backgroundColor = UIColor(named: "background")
     static let infoWiFi = UIColor(named: "infoWiFBackgroundColor")
+    static let cellBackgroundColor = UIColor(named: "cellBackground")
 }

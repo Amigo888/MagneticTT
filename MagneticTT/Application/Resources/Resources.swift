@@ -13,6 +13,10 @@ enum Resources {
         case mainImage
         case detectorImage
         case filterButton
+        case bluetooth
+        case tips
+        case homeCamera
+        case magnetic
         
         var image: UIImage? {
             switch self {
@@ -24,6 +28,18 @@ enum Resources {
                 
             case .filterButton:
                 return UIImage(named: "filterButton")
+                
+            case .bluetooth:
+                return UIImage(named: "bluetooth")
+                
+            case .tips:
+                return UIImage(named: "tips")
+                
+            case .homeCamera:
+                return UIImage(named: "homeCamera")
+                
+            case .magnetic:
+                return UIImage(named: "magnetic")
             }
         }
     }
