@@ -45,15 +45,23 @@ final class MagneticViewController: UIViewController {
         shadow.shadowBlurRadius = 5
         shadow.shadowOffset = CGSize(width: 0, height: 0)
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
-        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(
+            NSAttributedString.Key.kern,
+            value: -0.41,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
+        attributedString.addAttribute(
+            NSAttributedString.Key.shadow,
+            value: shadow,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
         label.attributedText = attributedString
         return label
     }()
     
     private lazy var circle: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .customNiddleColor
         view.layer.cornerRadius = 16
         return view
     }()
@@ -63,6 +71,8 @@ final class MagneticViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private var isSearchingStarted: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,22 +147,31 @@ final class MagneticViewController: UIViewController {
         
         seacrhNiddle.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
-            make.centerY.equalTo(circle)
-            make.trailing.equalTo(circle.snp.leading)
+            make.center.equalTo(circle)
         }
+        
+        seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
     @objc private func startSearch() {
-
-        let centerX = circle.frame.origin.x + circle.frame.size.width / 2
-        let centerY = circle.frame.origin.y + circle.frame.size.height
-        let center = CGPoint(x: centerX, y: centerY)
-        seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
-        circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        seacrhNiddle.center = center
+        
+        isSearchingStarted = true
+        circle.backgroundColor = .white
+        seacrhNiddle.image = Resources.Image.niddle.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        searchButton.setTitle("Stop", for: .normal)
+        
+        var counter = 0
+            Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+                if counter <= 50 {
+                    self.searchCheckingLabel.text = "\(counter)µT"
+                    counter += 1
+                } else {
+                    timer.invalidate()
+                }
+            }
         
         UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
-            // Устанавливаем новый угол поворота для изображения niddle
             self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         }, completion: nil)
     }
