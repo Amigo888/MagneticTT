@@ -185,4 +185,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCell(category: type)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionViewCases[indexPath.row] {
+        case .bluetooth:
+            print("Bluetooth")
+        case .homeCamera:
+            print("HomeCamera")
+        case .magnetic:
+            print("magnetic")
+            navigationController?.pushViewController(MagneticViewController(), animated: true)
+        case .tips:
+            print("Tips")
+        }
+    }
 }

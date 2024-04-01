@@ -29,6 +29,7 @@
 		5F73FD9A2BBA018B00556D65 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F73FD8D2BBA018B00556D65 /* Roboto-Bold.ttf */; };
 		5F73FD9B2BBA018B00556D65 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F73FD8E2BBA018B00556D65 /* Roboto-Thin.ttf */; };
 		5F73FD9C2BBA018B00556D65 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F73FD8F2BBA018B00556D65 /* Roboto-Black.ttf */; };
+		5FDAF7E52BBAA65B0024778C /* MagneticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAF7E42BBAA65B0024778C /* MagneticViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5F73FD8D2BBA018B00556D65 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		5F73FD8E2BBA018B00556D65 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		5F73FD8F2BBA018B00556D65 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		5FDAF7E42BBAA65B0024778C /* MagneticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagneticViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		5F73FD502BB9D68B00556D65 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5FDAF7E32BBAA6340024778C /* MagneticScreen */,
 				5F73FD772BB9E52700556D65 /* LaunchScreen */,
 				5F73FD762BB9E51E00556D65 /* MainScreen */,
 			);
@@ -183,6 +186,14 @@
 				5F73FD8F2BBA018B00556D65 /* Roboto-Black.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		5FDAF7E32BBAA6340024778C /* MagneticScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5FDAF7E42BBAA65B0024778C /* MagneticViewController.swift */,
+			);
+			path = MagneticScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */,
 				5F73FD742BB9DD7B00556D65 /* UIColor+CustomColors.swift in Sources */,
 				5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */,
+				5FDAF7E52BBAA65B0024778C /* MagneticViewController.swift in Sources */,
 				5F73FD722BB9DCC200556D65 /* Resources.swift in Sources */,
 				5F73FD812BB9F67600556D65 /* CustomCell.swift in Sources */,
 				5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */,
