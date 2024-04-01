@@ -38,8 +38,8 @@ final class CustomCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
-//        setupConstraints()
-//        addViews()
+        addViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -65,7 +65,7 @@ final class CustomCell: UICollectionViewCell {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(33)
             make.top.bottom.equalToSuperview().inset(20)
         }
         
@@ -75,8 +75,8 @@ final class CustomCell: UICollectionViewCell {
         }
     }
     
-    func configureCell() {
-        categoryName.text = "Infrared Detection"
-        categoryImage.image = Resources.Image.homeCamera.image
+    func configureCell(category: MainCategories) {
+        categoryName.text = category.title
+        categoryImage.image = category.image
     }
 }

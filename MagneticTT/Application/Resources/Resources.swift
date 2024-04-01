@@ -13,10 +13,6 @@ enum Resources {
         case mainImage
         case detectorImage
         case filterButton
-        case bluetooth
-        case tips
-        case homeCamera
-        case magnetic
         
         var image: UIImage? {
             switch self {
@@ -29,17 +25,6 @@ enum Resources {
             case .filterButton:
                 return UIImage(named: "filterButton")
                 
-            case .bluetooth:
-                return UIImage(named: "bluetooth")
-                
-            case .tips:
-                return UIImage(named: "tips")
-                
-            case .homeCamera:
-                return UIImage(named: "homeCamera")
-                
-            case .magnetic:
-                return UIImage(named: "magnetic")
             }
         }
     }
@@ -95,3 +80,38 @@ enum Resources {
     }
 }
 
+enum MainCategories: Int, CaseIterable {
+    case homeCamera
+    case bluetooth
+    case magnetic
+    case tips
+    
+    var image: UIImage? {
+        switch self {
+        case .homeCamera:
+            return UIImage(named: "homeCamera")
+            
+        case .bluetooth:
+            return UIImage(named: "bluetooth")
+            
+        case .magnetic:
+            return UIImage(named: "magnetic")
+            
+        case .tips:
+            return UIImage(named: "tips")
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .homeCamera:
+            "Infrared Detection"
+        case .bluetooth:
+            "Bluetooth Detection"
+        case .magnetic:
+            "Magnetic Detection"
+        case .tips:
+            "Antispy Tips"
+        }
+    }
+}

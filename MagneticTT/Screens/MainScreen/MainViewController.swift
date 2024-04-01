@@ -93,6 +93,8 @@ final class MainViewController: UIViewController {
         return collectionView
     }()
     
+    private let collectionViewCases = MainCategories.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -155,7 +157,7 @@ final class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        collectionViewCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -165,7 +167,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         ) as? CustomCell else {
             return UICollectionViewCell()
         }
-        cell.configureCell()
+        let type = collectionViewCases[indexPath.row]
+        cell.configureCell(category: type)
         return cell
     }
 }
