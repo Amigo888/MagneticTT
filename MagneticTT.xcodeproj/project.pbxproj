@@ -10,6 +10,7 @@
 		5F3293042BBB360F00C47208 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293032BBB360F00C47208 /* UILabel+Extensions.swift */; };
 		5F3293092BBB3E2300C47208 /* NetworkScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293082BBB3E2300C47208 /* NetworkScanViewController.swift */; };
 		5F3293192BBB42DB00C47208 /* hc6 s.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F3293182BBB42DB00C47208 /* hc6 s.json */; };
+		5F32931C2BBB4AA700C47208 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32931B2BBB4AA600C47208 /* ResultViewController.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -39,6 +40,7 @@
 		5F3293032BBB360F00C47208 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		5F3293082BBB3E2300C47208 /* NetworkScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScanViewController.swift; sourceTree = "<group>"; };
 		5F3293182BBB42DB00C47208 /* hc6 s.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hc6 s.json"; sourceTree = "<group>"; };
+		5F32931B2BBB4AA600C47208 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 				5F3293082BBB3E2300C47208 /* NetworkScanViewController.swift */,
 			);
 			path = NetworkScanScreen;
+			sourceTree = "<group>";
+		};
+		5F32931A2BBB4A8A00C47208 /* ResultScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F32931B2BBB4AA600C47208 /* ResultViewController.swift */,
+			);
+			path = ResultScreen;
 			sourceTree = "<group>";
 		};
 		5F73FD2E2BB9D35600556D65 = {
@@ -137,6 +147,7 @@
 		5F73FD502BB9D68B00556D65 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5F32931A2BBB4A8A00C47208 /* ResultScreen */,
 				5F3293072BBB3E0800C47208 /* NetworkScanScreen */,
 				5FDAF7E32BBAA6340024778C /* MagneticScreen */,
 				5F73FD772BB9E52700556D65 /* LaunchScreen */,
@@ -309,6 +320,7 @@
 				5F3293092BBB3E2300C47208 /* NetworkScanViewController.swift in Sources */,
 				5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */,
 				5FDAF7E52BBAA65B0024778C /* MagneticViewController.swift in Sources */,
+				5F32931C2BBB4AA700C47208 /* ResultViewController.swift in Sources */,
 				5F3293042BBB360F00C47208 /* UILabel+Extensions.swift in Sources */,
 				5F73FD722BB9DCC200556D65 /* Resources.swift in Sources */,
 				5F73FD812BB9F67600556D65 /* CustomCell.swift in Sources */,

@@ -18,12 +18,99 @@ final class NetworkScanViewController: UIViewController {
         return animation
     }()
     
+    private lazy var scanWiFiLabel = UILabel(
+        text: "Scanning Your Wi-Fi",
+        textColor: .white,
+        font: Resources.Font.robotoRegular(15)
+    )
+    
+    private lazy var wiFiNameLabel: UILabel = {
+        let label = UILabel(
+            text: "TLind_246_lp",
+            textColor: .customPurpleLight,
+            font: Resources.Font.robotoBold(28)
+        )
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
+        return label
+    }()
+    
+    private lazy var percantIndicator = UILabel(
+        text: "20%",
+        textColor: .white,
+        font: Resources.Font.robotoMedium(17)
+    )
+    
+    private lazy var quantityOfDevice: UILabel = {
+        let label = UILabel(
+            text: "23",
+            textColor: .customPurpleLight,
+            font: Resources.Font.robotoBold(28)
+        )
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
+        return label
+    }()
+    
+    private lazy var deviceFoundLabel = UILabel(
+        text: "Devices Found...",
+        textColor: .white,
+        font: Resources.Font.robotoMedium(17)
+    )
+    
+    private lazy var deviceFoundStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            quantityOfDevice,
+            deviceFoundLabel
+        ])
+        stackView.spacing = 0
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            scanWiFiLabel,
+            wiFiNameLabel
+        ])
+        stackView.spacing = 0
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
+    private lazy var stopButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .customPurpleLight
+        button.setTitle("Stop", for: .normal)
+        button.titleLabel?.font = Resources.Font.robotoBold(20)
+        button.layer.cornerRadius = 25
+        button.titleLabel?.textColor = .white
+       // button.addTarget(self, action: #selector(stopSearch), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addViews()
         setupConstraints()
-        animationView.play()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setupLottieTransaction()
     }
     
     private func setupView() {
@@ -32,13 +119,51 @@ final class NetworkScanViewController: UIViewController {
     
     private func addViews() {
         view.addSubview(animationView)
+        animationView.addSubview(percantIndicator)
+        view.addSubview(stackView)
+        view.addSubview(quantityOfDevice)
+        view.addSubview(deviceFoundLabel)
+        view.addSubview(stopButton)
     }
     
     private func setupConstraints() {
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(65)
+        }
+        
         animationView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.equalTo(stackView.snp.bottom).offset(71)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(animationView.snp.width)
+        }
+        
+        percantIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        quantityOfDevice.snp.makeConstraints { make in
+            make.top.equalTo(animationView.snp.bottom).offset(32)
+            make.centerX.equalToSuperview().offset(-60)
+        }
+        
+        deviceFoundLabel.snp.makeConstraints { make in
+            make.leading.equalTo(quantityOfDevice.snp.trailing).offset(8)
+            make.centerY.equalTo(quantityOfDevice)
+        }
+        
+        stopButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(36)
+        }
+    }
+    
+    private func setupLottieTransaction() {
+        animationView.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.navigationController?.pushViewController(ResultViewController(), animated: true)
         }
     }
 }
