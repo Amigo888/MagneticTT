@@ -73,7 +73,6 @@ final class MagneticViewController: UIViewController {
     }()
     
     private var isSearchingStarted: Bool = false
-    private var searchTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,9 +81,6 @@ final class MagneticViewController: UIViewController {
         addViews()
         setupConstaints()
     }
-    
-    //transform rotation
-    //ui property aniator
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
@@ -155,37 +151,43 @@ final class MagneticViewController: UIViewController {
         circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
-    @objc private func startSearch() {
+    private func animateArrow() {
+        let randomAngle = Double.random(in: 40...90)
+        let radians = CGFloat(randomAngle * .pi / 180.0) // Переводим угол в радианы
         
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear], animations: {
+            self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: radians)
+        }, completion: { [weak self] _ in
+            guard let self else { return }
+            self.searchButton.isEnabled = true
+            if self.isSearchingStarted {
+                self.searchCheckingLabel.text = String(format: "%.1fµT", randomAngle)
+                self.animateArrow()
+            }
+        })
+    }
+
+    @objc private func startSearch() {
         if isSearchingStarted {
+            self.searchButton.isEnabled = false
             isSearchingStarted = false
             searchButton.setTitle("Search", for: .normal)
+            circle.backgroundColor = .customNiddleColor
             searchCheckingLabel.text = "Search checking"
-            searchTimer?.invalidate()
-            searchTimer = nil            
+            seacrhNiddle.image = Resources.Image.niddle.image
             UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
                 self.seacrhNiddle.transform = .identity
-            }, completion: nil)
+            }, completion: { [weak self] _ in
+                guard let self else { return }
+                self.searchButton.isEnabled = true
+            })
             return
         }
-        
+        searchButton.isEnabled = false
         isSearchingStarted = true
         circle.backgroundColor = .white
         seacrhNiddle.image = Resources.Image.niddle.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
         searchButton.setTitle("Stop", for: .normal)
-        
-        var counter = 0
-        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
-            if counter <= 50 {
-                self.searchCheckingLabel.text = "\(counter)µT"
-                counter += 1
-            } else {
-                timer.invalidate()
-            }
-        }
-        
-        UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
-            self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        }, completion: nil)
+        animateArrow()
     }
 }
