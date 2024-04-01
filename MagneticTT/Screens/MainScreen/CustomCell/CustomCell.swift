@@ -21,6 +21,10 @@ final class CustomCell: UICollectionViewCell {
         label.textAlignment = .center
         label.numberOfLines = 2
         label.font = Resources.Font.robotoMedium(17)
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
+
         return label
     }()
     
@@ -49,7 +53,7 @@ final class CustomCell: UICollectionViewCell {
     private func setupCell() {
         contentView.backgroundColor = .cellBackgroundColor
         layer.masksToBounds = false
-        layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 8
         layer.shadowColor = UIColor.cellBackgroundColor?.withAlphaComponent(0.45).cgColor
         layer.shadowOffset = CGSize(width: -8, height: -8)
         layer.shadowRadius = 24

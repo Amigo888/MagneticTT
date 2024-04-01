@@ -21,34 +21,48 @@ final class MainViewController: UIViewController {
         let label = UILabel()
         label.textColor = .white
         label.text = "Current Wi-Fi"
-        label.font = .systemFont(ofSize: 15)
+        label.font = Resources.Font.robotoRegular(15)
         label.textAlignment = .center
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
         return label
     }()
     
     private lazy var wiFiNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .customPurpleLight
         label.text = "WIFI_Name"
-        label.font = .systemFont(ofSize: 28)
+        label.font = Resources.Font.robotoBold(28)
         label.textAlignment = .center
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
         return label
     }()
-    
+
     private lazy var readyScanLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .customDarkGrey
         label.text = "Ready to Scan this network"
-        label.font = .systemFont(ofSize: 17)
+        label.font = Resources.Font.robotoRegular(17)
         label.textAlignment = .center
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
+        label.attributedText = attributedString
         return label
     }()
     
     private lazy var scanButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
+        button.backgroundColor = .customPurpleLight
         button.setTitle("Scan current network", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.titleLabel?.font = Resources.Font.robotoBold(20)
         button.layer.cornerRadius = 25
         button.titleLabel?.textColor = .white
         return button
@@ -149,7 +163,7 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func settingButtonTapped() {
-        print("hi")
+        print("TEST")
     }
 }
 
