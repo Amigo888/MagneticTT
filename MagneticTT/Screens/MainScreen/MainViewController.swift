@@ -137,7 +137,7 @@ final class MainViewController: UIViewController {
     private func setupConstraints() {
         mainImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(329)
+            make.height.equalTo(mainImage.snp.width).dividedBy(1.185)
         }
         
         stackViewBackground.snp.makeConstraints { make in

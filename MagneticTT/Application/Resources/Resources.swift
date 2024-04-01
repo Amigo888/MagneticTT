@@ -14,6 +14,7 @@ enum Resources {
         case detectorImage
         case filterButton
         case circleGradient
+        case niddle
         
         var image: UIImage? {
             switch self {
@@ -28,6 +29,9 @@ enum Resources {
             
             case .circleGradient:
                 return UIImage(named: "circleGradient")
+                
+            case .niddle:
+                return UIImage(named: "niddle")
             }
         }
     }

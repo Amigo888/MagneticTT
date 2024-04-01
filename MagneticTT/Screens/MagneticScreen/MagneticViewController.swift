@@ -30,6 +30,7 @@ final class MagneticViewController: UIViewController {
         button.titleLabel?.font = Resources.Font.robotoBold(20)
         button.layer.cornerRadius = 25
         button.titleLabel?.textColor = .white
+        button.addTarget(self, action: #selector(startSearch), for: .touchUpInside)
         return button
     }()
     
@@ -50,6 +51,19 @@ final class MagneticViewController: UIViewController {
         return label
     }()
     
+    private lazy var circle: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        return view
+    }()
+    
+    private lazy var seacrhNiddle: UIImageView = {
+        let imageView = UIImageView(image: Resources.Image.niddle.image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -57,6 +71,9 @@ final class MagneticViewController: UIViewController {
         addViews()
         setupConstaints()
     }
+    
+    //transform rotation
+    //ui property aniator
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
@@ -85,6 +102,8 @@ final class MagneticViewController: UIViewController {
         view.addSubview(circleGradient)
         view.addSubview(searchButton)
         view.addSubview(searchCheckingLabel)
+        circleGradient.addSubview(circle)
+        circleGradient.addSubview(seacrhNiddle)
     }
     
     private func setupConstaints() {
@@ -109,5 +128,32 @@ final class MagneticViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(circleGradient.snp.bottom).offset(47)
         }
+        
+        circle.snp.makeConstraints { make in
+            make.size.equalTo(32)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        seacrhNiddle.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.centerY.equalTo(circle)
+            make.trailing.equalTo(circle.snp.leading)
+        }
+    }
+    
+    @objc private func startSearch() {
+
+        let centerX = circle.frame.origin.x + circle.frame.size.width / 2
+        let centerY = circle.frame.origin.y + circle.frame.size.height
+        let center = CGPoint(x: centerX, y: centerY)
+        seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        seacrhNiddle.center = center
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
+            // Устанавливаем новый угол поворота для изображения niddle
+            self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        }, completion: nil)
     }
 }
