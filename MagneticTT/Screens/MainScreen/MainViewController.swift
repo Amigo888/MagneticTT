@@ -11,52 +11,38 @@ import SnapKit
 final class MainViewController: UIViewController {
     
     private lazy var mainImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Resources.Image.mainImage.image
+        let imageView = UIImageView(image: Resources.Image.mainImage.image)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var currentWiFiLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.text = "Current Wi-Fi"
-        label.font = Resources.Font.robotoRegular(15)
-        label.textAlignment = .center
-        let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
-        label.attributedText = attributedString
-        return label
-    }()
+    private lazy var currentWiFiLabel = UILabel(
+        text: "Current Wi-Fi",
+        textColor: .white,
+        font: Resources.Font.robotoRegular(15)
+    )
     
     private lazy var wiFiNameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .customPurpleLight
-        label.text = "WIFI_Name"
-        label.font = Resources.Font.robotoBold(28)
-        label.textAlignment = .center
+        let label = UILabel(
+            text: "WIFI_Name",
+            textColor: .customPurpleLight,
+            font: Resources.Font.robotoBold(28)
+        )
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
         shadow.shadowBlurRadius = 5
         shadow.shadowOffset = CGSize(width: 0, height: 0)
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
         label.attributedText = attributedString
         return label
     }()
-
-    private lazy var readyScanLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .customDarkGrey
-        label.text = "Ready to Scan this network"
-        label.font = Resources.Font.robotoRegular(17)
-        label.textAlignment = .center
-        let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
-        label.attributedText = attributedString
-        return label
-    }()
+    
+    private lazy var readyScanLabel = UILabel(
+        text: "Ready to Scan this network",
+        textColor: .customDarkGrey,
+        font: Resources.Font.robotoRegular(17)
+    )
     
     private lazy var scanButton: UIButton = {
         let button = UIButton()

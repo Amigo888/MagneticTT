@@ -9,19 +9,9 @@ import UIKit
 
 final class MagneticViewController: UIViewController {
     
-    private lazy var detectorImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Resources.Image.detectorImage.image
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    private lazy var circleGradient: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Resources.Image.circleGradient.image
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private lazy var detectorImage = createImageView(with: Resources.Image.detectorImage.image)
+    private lazy var circleGradient = createImageView(with: Resources.Image.circleGradient.image)
+    private lazy var seacrhNiddle = createImageView(with: Resources.Image.niddle.image)
     
     private lazy var searchButton: UIButton = {
         let button = UIButton()
@@ -35,21 +25,16 @@ final class MagneticViewController: UIViewController {
     }()
     
     private lazy var searchCheckingLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.text = "Search checking"
-        label.font = Resources.Font.robotoMedium(17)
-        label.textAlignment = .center
+        let label = UILabel(
+            text: "Search checking",
+            textColor: .white,
+            font: Resources.Font.robotoMedium(17)
+        )
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
         shadow.shadowBlurRadius = 5
         shadow.shadowOffset = CGSize(width: 0, height: 0)
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(
-            NSAttributedString.Key.kern,
-            value: -0.41,
-            range: NSRange(location: 0, length: attributedString.length)
-        )
         attributedString.addAttribute(
             NSAttributedString.Key.shadow,
             value: shadow,
@@ -64,12 +49,6 @@ final class MagneticViewController: UIViewController {
         view.backgroundColor = .customNiddleColor
         view.layer.cornerRadius = 16
         return view
-    }()
-    
-    private lazy var seacrhNiddle: UIImageView = {
-        let imageView = UIImageView(image: Resources.Image.niddle.image)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
     }()
     
     private var isSearchingStarted: Bool = false
@@ -153,7 +132,7 @@ final class MagneticViewController: UIViewController {
     
     private func animateArrow() {
         let randomAngle = Double.random(in: 40...90)
-        let radians = CGFloat(randomAngle * .pi / 180.0) // Переводим угол в радианы
+        let radians = CGFloat(randomAngle * .pi / 180.0)
         
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear], animations: {
             self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: radians)
@@ -165,6 +144,12 @@ final class MagneticViewController: UIViewController {
                 self.animateArrow()
             }
         })
+    }
+    
+    private func createImageView(with image: UIImage?) -> UIImageView {
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }
 
     @objc private func startSearch() {
