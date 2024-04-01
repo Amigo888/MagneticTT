@@ -51,6 +51,7 @@ final class MainViewController: UIViewController {
         button.titleLabel?.font = Resources.Font.robotoBold(20)
         button.layer.cornerRadius = 25
         button.titleLabel?.textColor = .white
+        button.addTarget(self, action: #selector(scanNetwork), for: .touchUpInside)
         return button
     }()
     
@@ -150,6 +151,10 @@ final class MainViewController: UIViewController {
     
     @objc private func settingButtonTapped() {
         print("TEST")
+    }
+    
+    @objc private func scanNetwork() {
+        navigationController?.pushViewController(NetworkScanViewController(), animated: true)
     }
 }
 
