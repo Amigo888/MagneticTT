@@ -12,14 +12,8 @@ final class MagneticViewController: UIViewController {
     private lazy var detectorImage = createImageView(with: Resources.Image.detectorImage.image)
     private lazy var circleGradient = createImageView(with: Resources.Image.circleGradient.image)
     private lazy var seacrhNiddle = createImageView(with: Resources.Image.niddle.image)
-    
-    private lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .customPurpleLight
-        button.setTitle("Search", for: .normal)
-        button.titleLabel?.font = Resources.Font.robotoBold(20)
-        button.layer.cornerRadius = 25
-        button.titleLabel?.textColor = .white
+    private lazy var searchButton: ReusableButton = {
+        let button = ReusableButton(title: "Start")
         button.addTarget(self, action: #selector(startSearch), for: .touchUpInside)
         return button
     }()
@@ -30,10 +24,7 @@ final class MagneticViewController: UIViewController {
             textColor: .white,
             font: Resources.Font.robotoMedium(17)
         )
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
-        shadow.shadowBlurRadius = 5
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let shadow = NSShadow.shadowCreate()
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
         attributedString.addAttribute(
             NSAttributedString.Key.shadow,

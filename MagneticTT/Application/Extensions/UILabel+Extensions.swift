@@ -15,7 +15,7 @@ extension UILabel {
         font: UIFont? = nil,
         alignment: NSTextAlignment = .center,
         numberOfLines: Int = 0,
-        kern: CGFloat = -0.41
+        kern: CGFloat = 0
     ) {
         self.init()
         self.text = text
@@ -23,7 +23,6 @@ extension UILabel {
         self.font = font
         self.textAlignment = alignment
         self.numberOfLines = numberOfLines
-        self.setKernValue(kern)
     }
     
     func setKernValue(_ kern: CGFloat) {
@@ -33,4 +32,3 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
-

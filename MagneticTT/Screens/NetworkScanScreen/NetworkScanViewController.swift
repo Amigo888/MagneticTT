@@ -30,12 +30,13 @@ final class NetworkScanViewController: UIViewController {
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
-        shadow.shadowBlurRadius = 5
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let shadow = NSShadow.shadowCreate()
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(
+            NSAttributedString.Key.shadow,
+            value: shadow,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
         label.attributedText = attributedString
         return label
     }()
@@ -52,12 +53,13 @@ final class NetworkScanViewController: UIViewController {
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
-        shadow.shadowBlurRadius = 5
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let shadow = NSShadow.shadowCreate()
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(
+            NSAttributedString.Key.shadow,
+            value: shadow,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
         label.attributedText = attributedString
         return label
     }()
@@ -67,17 +69,6 @@ final class NetworkScanViewController: UIViewController {
         textColor: .white,
         font: Resources.Font.robotoMedium(17)
     )
-    
-    private lazy var deviceFoundStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            quantityOfDevice,
-            deviceFoundLabel
-        ])
-        stackView.spacing = 0
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        return stackView
-    }()
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
@@ -89,16 +80,7 @@ final class NetworkScanViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var stopButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .customPurpleLight
-        button.setTitle("Stop", for: .normal)
-        button.titleLabel?.font = Resources.Font.robotoBold(20)
-        button.layer.cornerRadius = 25
-        button.titleLabel?.textColor = .white
-       // button.addTarget(self, action: #selector(stopSearch), for: .touchUpInside)
-        return button
-    }()
+    private lazy var stopButton = ReusableButton(title: "Stop")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,8 +143,7 @@ final class NetworkScanViewController: UIViewController {
     
     private func setupLottieTransaction() {
         animationView.play()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(ResultViewController(), animated: true)
         }
     }

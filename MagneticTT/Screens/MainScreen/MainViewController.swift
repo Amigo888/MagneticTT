@@ -28,12 +28,13 @@ final class MainViewController: UIViewController {
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)
-        shadow.shadowBlurRadius = 5
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        let shadow = NSShadow.shadowCreate()
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(
+            NSAttributedString.Key.shadow,
+            value: shadow,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
         label.attributedText = attributedString
         return label
     }()
@@ -44,13 +45,8 @@ final class MainViewController: UIViewController {
         font: Resources.Font.robotoRegular(17)
     )
     
-    private lazy var scanButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .customPurpleLight
-        button.setTitle("Scan current network", for: .normal)
-        button.titleLabel?.font = Resources.Font.robotoBold(20)
-        button.layer.cornerRadius = 25
-        button.titleLabel?.textColor = .white
+    private lazy var scanButton: ReusableButton = {
+        let button = ReusableButton(title: "Scan current network")
         button.addTarget(self, action: #selector(scanNetwork), for: .touchUpInside)
         return button
     }()
