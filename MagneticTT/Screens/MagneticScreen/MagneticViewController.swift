@@ -73,6 +73,7 @@ final class MagneticViewController: UIViewController {
     }()
     
     private var isSearchingStarted: Bool = false
+    private var searchTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,20 +157,32 @@ final class MagneticViewController: UIViewController {
     
     @objc private func startSearch() {
         
+        if isSearchingStarted {
+            isSearchingStarted = false
+            searchButton.setTitle("Search", for: .normal)
+            searchCheckingLabel.text = "Search checking"
+            searchTimer?.invalidate()
+            searchTimer = nil            
+            UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
+                self.seacrhNiddle.transform = .identity
+            }, completion: nil)
+            return
+        }
+        
         isSearchingStarted = true
         circle.backgroundColor = .white
         seacrhNiddle.image = Resources.Image.niddle.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
         searchButton.setTitle("Stop", for: .normal)
         
         var counter = 0
-            Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
-                if counter <= 50 {
-                    self.searchCheckingLabel.text = "\(counter)µT"
-                    counter += 1
-                } else {
-                    timer.invalidate()
-                }
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+            if counter <= 50 {
+                self.searchCheckingLabel.text = "\(counter)µT"
+                counter += 1
+            } else {
+                timer.invalidate()
             }
+        }
         
         UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
             self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
