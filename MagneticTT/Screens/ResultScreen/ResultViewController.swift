@@ -23,6 +23,14 @@ final class ResultViewController: UIViewController {
     private lazy var customView = CustomResultView()
     private var viewModel = ResultViewModel()
     
+    private var customViewTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 26.375
+    }
+    
+    private var tableViewTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 21.1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -51,14 +59,14 @@ final class ResultViewController: UIViewController {
     
     private func setupConstraints() {
         customView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(customViewTopOffset)
             make.height.equalTo(customView.snp.width).dividedBy(6.48)
             make.centerX.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(20)
         }
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(customView.snp.bottom).offset(40)
+            make.top.equalTo(customView.snp.bottom).offset(tableViewTopOffset)
             make.bottom.equalToSuperview()
         }
     }
