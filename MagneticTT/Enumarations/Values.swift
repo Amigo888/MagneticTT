@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Enum Value
+
 enum Value {
     static let baseTwo: CGFloat = 2
     static let deviceDiagonal: Double = 5.4

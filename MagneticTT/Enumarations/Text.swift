@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Enum Text
+
 enum Text {
     static let nameLottieJSON = "hc6 s"
     static let mainViewTilte = "Main"

@@ -10,7 +10,10 @@ import UIKit
 let uiscreenWidth = UIScreen.main.bounds.width
 let uiscreenHeight = UIScreen.main.bounds.height
 
+// MARK: - Enum Constraints
+
 enum Constraints {
+    
     enum Fixed {
         static let baseOffset20: CGFloat = 20
         static let baseOffset24: CGFloat = 24

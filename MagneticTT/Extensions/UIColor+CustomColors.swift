@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Extension UIColor
+
 extension UIColor {
     static let backgroundColor = UIColor(named: "background")
     static let infoWiFi = UIColor(named: "infoWiFBackgroundColor")

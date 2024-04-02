@@ -9,6 +9,8 @@ import UIKit
 
 final class CustomDetailedView: UIView {
     
+    // MARK: - Private Properties
+    
     private lazy var typeOfDevice: UILabel = {
         let label = UILabel(
             text: Text.typeOfDevice,
@@ -44,7 +46,11 @@ final class CustomDetailedView: UIView {
         return tableView
     }()
     
+    // MARK: - Property
+    
     var detailedInfo: Devices?
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,6 +58,8 @@ final class CustomDetailedView: UIView {
         addViews()
         setupConstraints()
     }
+    
+    // MARK: - LayoutSubviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -61,6 +69,8 @@ final class CustomDetailedView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         backgroundColor = .infoWiFiBackground
@@ -85,6 +95,8 @@ final class CustomDetailedView: UIView {
         }
     }
     
+    // MARK: - Methods
+    
     func setupViewWithData() {
         guard let info = detailedInfo else {
             return
@@ -95,7 +107,10 @@ final class CustomDetailedView: UIView {
     }
 }
 
-extension CustomDetailedView: UITableViewDataSource, UITableViewDelegate {
+// MARK: - Extension UITableViewDataSource
+
+extension CustomDetailedView: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         Value.detailedTableViewCellQuantity
     }
@@ -113,6 +128,11 @@ extension CustomDetailedView: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: info, indexPath: indexPath.row)
         return cell
     }
+}
+
+// MARK: - Extension UITableViewDelegate
+
+extension CustomDetailedView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Value.detailedTableViewRowHeight

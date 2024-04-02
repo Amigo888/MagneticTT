@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Extension UILabel
+
 extension UILabel {
+    
+    // MARK: - Convenience init
     
     convenience init(
         text: String? = nil,
@@ -25,12 +29,16 @@ extension UILabel {
         self.numberOfLines = numberOfLines
     }
     
-    func setKernValue(_ kern: CGFloat) {
+    // MARK: - Private Method
+    
+    private func setKernValue(_ kern: CGFloat) {
         guard let labelText = self.text else { return }
         let attributedString = NSMutableAttributedString(string: labelText)
         attributedString.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString
     }
+    
+    // MARK: - Method
     
     func addShadowToText(shadow: NSShadow) {
         guard let labelText = self.text else { return }

@@ -9,6 +9,8 @@ import UIKit
 
 final class CustomMainView: UIView {
     
+    // MARK: - Private Properties
+    
     private lazy var currentWiFiLabel = UILabel(
         text: Text.currentWiFiLabel,
         textColor: .white,
@@ -51,9 +53,11 @@ final class CustomMainView: UIView {
         return stackView
     }()
     
+    // MARK: - Property
+    
     var action: (() -> (Void))?
     
-    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,6 +70,8 @@ final class CustomMainView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         layer.cornerRadius = 8

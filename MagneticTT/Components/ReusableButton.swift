@@ -9,6 +9,8 @@ import UIKit
 
 final class ReusableButton: UIButton {
     
+    // MARK: - Init
+    
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
@@ -19,6 +21,7 @@ final class ReusableButton: UIButton {
         super.init(coder: coder)
     }
     
+    //MARK: - Private Method
     
     private func configureButton() {
         setTitleColor(.white, for: .normal)
@@ -27,7 +30,10 @@ final class ReusableButton: UIButton {
         backgroundColor = .customPurpleLight
         guard let labelText = titleLabel?.text else { return }
         let attributedString = NSMutableAttributedString(string: labelText)
-        attributedString.addAttribute(.kern, value: 0.38, range: NSRange(location: .zero, length: attributedString.length))
+        attributedString.addAttribute(
+            .kern, value: 0.38,
+            range: NSRange(location: .zero, length: attributedString.length)
+        )
         titleLabel?.attributedText = attributedString
     }
 }

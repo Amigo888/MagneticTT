@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Enum MainCategories
+
 enum MainCategories: Int, CaseIterable {
     case homeCamera
     case bluetooth

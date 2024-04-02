@@ -7,7 +7,12 @@
 
 import UIKit
 
+// MARK: - Extension NSShadow
+
 extension NSShadow {
+    
+    // MARK: - Method
+    
     static func shadowCreate() -> NSShadow {
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.customPurpleLight?.withAlphaComponent(0.55)

@@ -9,6 +9,8 @@ import UIKit
 
 final class CustomResultView: UIView {
     
+    // MARK: - Private Properties
+    
     private lazy var quantityOfDevice: UILabel = {
         let label = UILabel(
             text: Text.quantityOfResultDevice,
@@ -30,6 +32,8 @@ final class CustomResultView: UIView {
         font: Resources.Font.robotoRegular(15)
     )
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -38,6 +42,8 @@ final class CustomResultView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Private Methods
     
     private func setupUI() {
         backgroundColor = .clear
