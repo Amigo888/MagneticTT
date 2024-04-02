@@ -133,8 +133,9 @@ final class NetworkScanViewController: UIViewController {
     
     private func setupLottieTransaction() {
         animationView.play()
+        let resultVC = ResultViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.navigationController?.pushViewController(ResultViewController(), animated: true)
+            self.navigationController?.pushViewController(resultVC, animated: true)
         }
     }
     

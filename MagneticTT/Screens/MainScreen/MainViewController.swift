@@ -96,7 +96,8 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func scanNetwork() {
-        navigationController?.pushViewController(NetworkScanViewController(), animated: true)
+        let networkScanVC = NetworkScanViewController()
+        navigationController?.pushViewController(networkScanVC, animated: true)
     }
 }
 
@@ -127,7 +128,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("HomeCamera")
         case .magnetic:
             print("magnetic")
-            navigationController?.pushViewController(MagneticViewController(), animated: true)
+            let magneticVC = MagneticViewController()
+            navigationController?.pushViewController(magneticVC, animated: true)
         case .tips:
             print("Tips")
         }
