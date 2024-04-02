@@ -14,7 +14,7 @@ final class CustomMainView: UIView {
         textColor: .white,
         font: Resources.Font.robotoRegular(15)
     )
-
+    
     private lazy var wiFiNameLabel: UILabel = {
         let label = UILabel(
             text: "WIFI_Name",
@@ -24,13 +24,13 @@ final class CustomMainView: UIView {
         label.addShadowToText(shadow: NSShadow.shadowCreate())
         return label
     }()
-
+    
     private lazy var readyScanLabel = UILabel(
         text: "Ready to Scan this network",
         textColor: .customDarkGrey,
         font: Resources.Font.robotoRegular(17)
     )
-
+    
     private lazy var scanButton: ReusableButton = {
         let button = ReusableButton(title: "Scan current network")
         button.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
@@ -45,25 +45,15 @@ final class CustomMainView: UIView {
             scanButton
         ])
         stackView.setCustomSpacing(.zero, after: currentWiFiLabel)
-        stackView.setCustomSpacing(UIScreen.main.bounds.height / 52.75, after: wiFiNameLabel)
-        stackView.setCustomSpacing(UIScreen.main.bounds.height / 105.5, after: readyScanLabel)
+        stackView.setCustomSpacing(Constraints.Calculated.stackViewSustomSpacing16, after: wiFiNameLabel)
+        stackView.setCustomSpacing(Constraints.Calculated.stackViewSustomSpacing8, after: readyScanLabel)
         stackView.axis = .vertical
         return stackView
     }()
     
     var action: (() -> (Void))?
     
-    private var stackViewHorizontalOffset: CGFloat {
-        return UIScreen.main.bounds.height / 24.375
-    }
     
-    private var stackViewVerticalOffset: CGFloat {
-        return UIScreen.main.bounds.height / 35.16
-    }
-    
-    private var scanButtonHeight: CGFloat {
-        return UIScreen.main.bounds.height / 16.88
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,17 +78,17 @@ final class CustomMainView: UIView {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(stackViewHorizontalOffset)
-            make.top.bottom.equalToSuperview().inset(stackViewVerticalOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Calculated.stackViewHorizontalOffset)
+            make.top.bottom.equalToSuperview().inset(Constraints.Calculated.stackViewVerticalOffset)
         }
         
         scanButton.snp.makeConstraints { make in
-            make.height.equalTo(scanButtonHeight)
+            make.height.equalTo(Constraints.Calculated.generalButtonHeight)
         }
     }
     
     private func setupCornerButtonRadius() {
-        scanButton.layer.cornerRadius = scanButtonHeight / 2
+        scanButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
     }
     
     @objc private func scanButtonTapped() {

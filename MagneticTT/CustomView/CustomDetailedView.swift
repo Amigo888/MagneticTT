@@ -75,13 +75,13 @@ final class CustomDetailedView: UIView {
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(Constraints.Fixed.baseOffset24)
             make.centerX.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(stackView.snp.bottom).offset(24)
+            make.top.equalTo(stackView.snp.bottom).offset(Constraints.Fixed.baseOffset24)
         }
     }
     
@@ -97,7 +97,7 @@ final class CustomDetailedView: UIView {
 
 extension CustomDetailedView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        Value.detailedTableViewCellQuantity
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,6 +115,6 @@ extension CustomDetailedView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+        return Value.detailedTableViewRowHeight
     }
 }

@@ -50,18 +50,18 @@ final class CustomResultView: UIView {
     private func setupConstraints() {
         
         deviceFoundLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().offset(10)
+            make.centerX.equalToSuperview().offset(Constraints.Fixed.baseOffset10)
             make.top.equalToSuperview()
         }
         
         quantityOfDevice.snp.makeConstraints { make in
             make.centerY.equalTo(deviceFoundLabel)
-            make.trailing.equalTo(deviceFoundLabel.snp.leading).offset(-8)
+            make.trailing.equalTo(deviceFoundLabel.snp.leading).offset(-Constraints.Fixed.baseOffset8)
         }
         
         wifiName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(deviceFoundLabel.snp.bottom).offset(8)
+            make.top.equalTo(deviceFoundLabel.snp.bottom).offset(Constraints.Fixed.baseOffset8)
         }
     }
 }

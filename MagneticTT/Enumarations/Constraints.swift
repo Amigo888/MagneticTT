@@ -13,12 +13,14 @@ let uiscreenHeight = UIScreen.main.bounds.height
 enum Constraints {
     enum Fixed {
         static let baseOffset20: CGFloat = 20
+        static let baseOffset24: CGFloat = 24
         static let baseOffset40: CGFloat = 40
         static let baseOffset16: CGFloat = 16
         static let baseOffset18: CGFloat = 18
         static let baseOffset36: CGFloat = 36
         static let baseOffset8: CGFloat = 8
-        static let baseOffset9: CGFloat = 8
+        static let baseOffset9: CGFloat = 9
+        static let baseOffset10: CGFloat = 10
         static let circleSize: CGFloat = 32
         static let detailedViewHeight: CGFloat = 294
         static let quantityOfDevice: CGFloat = -60
@@ -47,6 +49,10 @@ enum Constraints {
         static let detailedViewSideOffset = uiscreenWidth / 19.5
         static let mainScreenCellHorizontalOffset = uiscreenWidth / 21
         static let mainScreenCellVerticalOffset = uiscreenHeight / 60
+        static let stackViewHorizontalOffset = uiscreenHeight / 24.375
+        static let stackViewVerticalOffset = uiscreenHeight / 35.16
+        static let stackViewSustomSpacing16 = uiscreenHeight / 52.75
+        static let stackViewSustomSpacing8 = uiscreenHeight / 105.5
     }
 }
 
@@ -54,4 +60,6 @@ enum Value {
     static let base2: Int = 2
     static let deviceDiagonal: Double = 5.4
     static let resultTableViewRowHeight: Double = 54
+    static let detailedTableViewRowHeight: Double = 48
+    static let detailedTableViewCellQuantity: Int = 4
 }

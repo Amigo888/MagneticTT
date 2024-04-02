@@ -12,6 +12,7 @@ final class MagneticViewController: UIViewController {
     private lazy var detectorImage = createImageView(with: Resources.Image.detectorImage.image)
     private lazy var circleGradient = createImageView(with: Resources.Image.circleGradient.image)
     private lazy var seacrhNiddle = createImageView(with: Resources.Image.niddle.image)
+    
     private lazy var searchButton: ReusableButton = {
         let button = ReusableButton(title: "Start")
         button.addTarget(self, action: #selector(startSearch), for: .touchUpInside)
