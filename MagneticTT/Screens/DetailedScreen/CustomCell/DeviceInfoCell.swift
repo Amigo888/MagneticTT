@@ -53,7 +53,7 @@ final class DeviceInfoCell: UITableViewCell {
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset16)
         }
     }
     

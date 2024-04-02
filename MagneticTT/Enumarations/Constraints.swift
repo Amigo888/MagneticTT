@@ -13,10 +13,14 @@ let uiscreenHeight = UIScreen.main.bounds.height
 enum Constraints {
     enum Fixed {
         static let baseOffset20: CGFloat = 20
+        static let baseOffset40: CGFloat = 40
         static let baseOffset16: CGFloat = 16
         static let baseOffset18: CGFloat = 18
+        static let baseOffset36: CGFloat = 36
         static let baseOffset8: CGFloat = 8
+        static let baseOffset9: CGFloat = 8
         static let circleSize: CGFloat = 32
+        static let detailedViewHeight: CGFloat = 294
         static let quantityOfDevice: CGFloat = -60
         static let minimumInteritemSpacing: CGFloat = 38
         static let minimumLineSpacing: CGFloat = 35
@@ -24,6 +28,8 @@ enum Constraints {
         static let circleGradientDividerHeight: CGFloat = 1.944
         static let customMainViewDividerHeight: CGFloat = 1.76
         static let customResultViewDividerHeight: CGFloat = 6.48
+        static let categoryImageDividerHeight: CGFloat = 3.18
+        static let categoryImageDividerWidth: CGFloat = 1.32
     }
     
     enum Calculated {
@@ -38,6 +44,9 @@ enum Constraints {
         static let quantityLabelTopOffset = uiscreenHeight / 26.375
         static let tableViewTopOffset = uiscreenHeight / 21.1
         static let customViewTopOffset = uiscreenHeight / 26.375
+        static let detailedViewSideOffset = uiscreenWidth / 19.5
+        static let mainScreenCellHorizontalOffset = uiscreenWidth / 21
+        static let mainScreenCellVerticalOffset = uiscreenHeight / 60
     }
 }
 

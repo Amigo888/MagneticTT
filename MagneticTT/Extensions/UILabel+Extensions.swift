@@ -15,7 +15,7 @@ extension UILabel {
         font: UIFont? = nil,
         alignment: NSTextAlignment = .center,
         numberOfLines: Int = 0,
-        kern: CGFloat = 0
+        kern: CGFloat = -0.41
     ) {
         self.init()
         self.text = text

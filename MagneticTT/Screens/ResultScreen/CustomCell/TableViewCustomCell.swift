@@ -66,21 +66,21 @@ final class TableViewCustomCell: UITableViewCell {
     
     private func setupConstraints() {
         wifiImage.snp.makeConstraints { make in
-            make.size.equalTo(36)
+            make.size.equalTo(Constraints.Fixed.baseOffset36)
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(Constraints.Fixed.baseOffset16)
         }
         
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(wifiImage.snp.trailing).offset(16)
+            make.leading.equalTo(wifiImage.snp.trailing).offset(Constraints.Fixed.baseOffset16)
         }
         
         arrowImage.snp.makeConstraints { make in
-            make.width.equalTo(9)
-            make.height.equalTo(16)
+            make.width.equalTo(Constraints.Fixed.baseOffset9)
+            make.height.equalTo(Constraints.Fixed.baseOffset16)
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset16)
         }
     }
     

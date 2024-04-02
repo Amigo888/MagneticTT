@@ -15,18 +15,11 @@ final class CustomCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var categoryName: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.font = Resources.Font.robotoMedium(17)
-        let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: -0.41, range: NSRange(location: 0, length: attributedString.length))
-        label.attributedText = attributedString
-
-        return label
-    }()
+    private lazy var categoryName = UILabel(
+        textColor: .white,
+        font: Resources.Font.robotoMedium(17),
+        numberOfLines: 2
+    )
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
@@ -38,14 +31,6 @@ final class CustomCell: UICollectionViewCell {
         stackView.alignment = .center
         return stackView
     }()
-    
-    private var stackViewHorizontalOffset: CGFloat {
-        return UIScreen.main.bounds.width / 21
-    }
-    
-    private var stackViewVerticalOffset: CGFloat {
-        return UIScreen.main.bounds.height / 60
-    }
     
     private let currentDevice = ConfigFile.shared.currentDevice
     private let devices = ConfigFile.shared.smallIphone
@@ -66,7 +51,6 @@ final class CustomCell: UICollectionViewCell {
         layer.masksToBounds = false
         contentView.layer.cornerRadius = 8
         layer.shadowColor = UIColor.cellBackgroundColor?.withAlphaComponent(0.45).cgColor
-//        layer.shadowColor = UIColor.red.cgColor
         layer.shadowOffset = CGSize(width: -8, height: 8)
         layer.shadowRadius = 24
         layer.shadowOpacity = 1.0
@@ -82,17 +66,17 @@ final class CustomCell: UICollectionViewCell {
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             if currentDevice.isOneOf(devices) {
-                make.leading.trailing.equalToSuperview().inset(stackViewHorizontalOffset)
-                make.top.bottom.equalToSuperview().inset(stackViewVerticalOffset)
+                make.leading.trailing.equalToSuperview().inset(Constraints.Calculated.mainScreenCellHorizontalOffset)
+                make.top.bottom.equalToSuperview().inset(Constraints.Calculated.mainScreenCellVerticalOffset)
             } else {
                 make.leading.trailing.equalToSuperview()
-                make.top.bottom.equalToSuperview().inset(20)
+                make.top.bottom.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
             }
         }
         
         categoryImage.snp.makeConstraints { make in
-            make.height.equalToSuperview().dividedBy(3.18)
-            make.width.equalTo(categoryImage.snp.height).dividedBy(1.32)
+            make.height.equalToSuperview().dividedBy(Constraints.Fixed.categoryImageDividerHeight)
+            make.width.equalTo(categoryImage.snp.height).dividedBy(Constraints.Fixed.categoryImageDividerWidth)
         }
     }
     

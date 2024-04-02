@@ -17,11 +17,7 @@ final class DetailedViewController: UIViewController {
     
     private lazy var detailedView = CustomDetailedView()
     var deviceInfo: Devices?
-    
-    private var detailedViewSideOffset: CGFloat {
-        return UIScreen.main.bounds.width / 19.5
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -49,13 +45,13 @@ final class DetailedViewController: UIViewController {
     private func setupConstraints() {
         mainImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(mainImage.snp.width).dividedBy(1.185)
+            make.height.equalTo(mainImage.snp.width).dividedBy(Constraints.Fixed.dividerForMainImage)
         }
         
         detailedView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(detailedViewSideOffset)
-            make.height.equalTo(294)
-            make.top.equalTo(mainImage.snp.bottom).inset(40)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Calculated.detailedViewSideOffset)
+            make.height.equalTo(Constraints.Fixed.detailedViewHeight)
+            make.top.equalTo(mainImage.snp.bottom).inset(Constraints.Fixed.baseOffset40)
         }
     }
     
