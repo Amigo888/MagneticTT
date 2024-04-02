@@ -129,9 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				5F3293212BBB631B00C47208 /* ReusableButton.swift */,
-				5F3293272BBBF92600C47208 /* CustomResultView.swift */,
-				5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */,
-				5F3293332BBC1AC700C47208 /* CustomMainView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -153,6 +150,14 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		5F3293352BBC1CBF00C47208 /* LottieAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				5F3293182BBB42DB00C47208 /* hc6 s.json */,
+			);
+			path = LottieAnimation;
+			sourceTree = "<group>";
+		};
 		5F73FD2E2BB9D35600556D65 = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +177,9 @@
 		5F73FD392BB9D35600556D65 /* MagneticTT */ = {
 			isa = PBXGroup;
 			children = (
-				5F3293182BBB42DB00C47208 /* hc6 s.json */,
+				5F3293352BBC1CBF00C47208 /* LottieAnimation */,
+				5F3293202BBB630000C47208 /* Components */,
+				5F73FD752BB9DD9600556D65 /* Extensions */,
 				5F73FD7E2BB9EF3E00556D65 /* CustomView */,
 				5F73FD502BB9D68B00556D65 /* Screens */,
 				5F73FD4E2BB9D65200556D65 /* Application */,
@@ -183,9 +190,7 @@
 		5F73FD4E2BB9D65200556D65 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				5F3293202BBB630000C47208 /* Components */,
 				5F73FD822BBA018B00556D65 /* Roboto */,
-				5F73FD752BB9DD9600556D65 /* Extensions */,
 				5F73FD4F2BB9D67000556D65 /* Resources */,
 				5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */,
 				5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */,
@@ -247,6 +252,9 @@
 		5F73FD7E2BB9EF3E00556D65 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				5F3293272BBBF92600C47208 /* CustomResultView.swift */,
+				5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */,
+				5F3293332BBC1AC700C47208 /* CustomMainView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
