@@ -139,7 +139,7 @@ enum MainCategories: Int, CaseIterable {
         case .magnetic:
             "Magnetic Detection"
         case .tips:
-            "Antispy Tips"
+            "Antispy \nTips"
         }
     }
 }

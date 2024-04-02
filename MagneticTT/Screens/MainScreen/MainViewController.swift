@@ -37,10 +37,13 @@ final class MainViewController: UIViewController {
     
     private let collectionViewCases = MainCategories.allCases
     
+    private var customMainViewTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 21.1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupHeader()
         addViews()
         setupConstraints()
         setupViewAction()
@@ -48,7 +51,9 @@ final class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         setupNavBar()
+        setupHeader()
     }
     
     private func setupView() {
@@ -82,7 +87,7 @@ final class MainViewController: UIViewController {
         customMainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(198)
-            make.top.equalTo(mainImage.snp.bottom).inset(40)
+            make.top.equalTo(mainImage.snp.bottom).inset(customMainViewTopOffset)
         }
         
         collectionView.snp.makeConstraints { make in
