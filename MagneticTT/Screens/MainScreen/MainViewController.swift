@@ -21,6 +21,7 @@ final class MainViewController: UIViewController {
     private lazy var customFlowLayout: UICollectionViewFlowLayout = {
         let customFlowLayout = UICollectionViewFlowLayout()
         customFlowLayout.minimumLineSpacing = 35
+        customFlowLayout.minimumInteritemSpacing = 38
         return customFlowLayout
     }()
     
@@ -28,22 +29,23 @@ final class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: customFlowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.isScrollEnabled = true
+        if currentDiagonal >= 5.4 {
+            collectionView.isScrollEnabled = false
+        } else {
+            collectionView.isScrollEnabled = true
+        }
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: String(describing: CustomCell.self))
         collectionView.backgroundColor = .clear
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 8, right: 18)
         return collectionView
     }()
     
     private let collectionViewCases = MainCategories.allCases
+    private let currentDiagonal = ConfigFile.shared.currentDeviceDiagonal
     
     private var customMainViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 21.1
-    }
-    
-    private var collecintionViewHorizontalOffset: CGFloat {
-        return UIScreen.main.bounds.width / 10.8
+        return UIScreen.main.bounds.height / 16.88
     }
     
     override func viewDidLoad() {
@@ -97,7 +99,7 @@ final class MainViewController: UIViewController {
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(customMainView.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(collecintionViewHorizontalOffset)
+            make.leading.trailing.equalToSuperview().inset(18)
             make.bottom.equalToSuperview()
         }
     }
@@ -154,19 +156,20 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("Tips")
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.contentView.layer.masksToBounds = true
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
+    }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let contentInsets = collectionView.contentInset
-        let totalContentWidth = collectionView.bounds.width - (contentInsets.left + contentInsets.right)
-        let numberOfColumns: CGFloat = 2
-        let spacingBetweenCells: CGFloat = 38
-        let totalSpacing = spacingBetweenCells * (numberOfColumns - 1)
-        let widthForItem = (totalContentWidth - totalSpacing) / numberOfColumns
-        
-        let heightForItem = widthForItem
-        
-        return CGSize(width: widthForItem, height: heightForItem)
+        let collectionViewContentInset: CGFloat = 18
+        let distanceBetweenItems: CGFloat = 38
+        let cellWidth = (collectionView.frame.width - distanceBetweenItems - collectionViewContentInset * 2) / 2
+        let cellHeight = cellWidth
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }

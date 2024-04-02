@@ -66,7 +66,8 @@ final class CustomCell: UICollectionViewCell {
         layer.masksToBounds = false
         contentView.layer.cornerRadius = 8
         layer.shadowColor = UIColor.cellBackgroundColor?.withAlphaComponent(0.45).cgColor
-        layer.shadowOffset = CGSize(width: -8, height: -8)
+//        layer.shadowColor = UIColor.red.cgColor
+        layer.shadowOffset = CGSize(width: -8, height: 8)
         layer.shadowRadius = 24
         layer.shadowOpacity = 1.0
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
@@ -84,7 +85,7 @@ final class CustomCell: UICollectionViewCell {
                 make.leading.trailing.equalToSuperview().inset(stackViewHorizontalOffset)
                 make.top.bottom.equalToSuperview().inset(stackViewVerticalOffset)
             } else {
-                make.leading.trailing.equalToSuperview().inset(33)
+                make.leading.trailing.equalToSuperview()
                 make.top.bottom.equalToSuperview().inset(20)
             }
         }

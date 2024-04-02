@@ -18,4 +18,5 @@ final class ConfigFile {
                                  .simulator(.iPhoneSE3), .simulator(.iPhone7),
                                  .simulator(.iPhone8), .simulator(.iPhone6), .simulator(.iPhone6s)
     ]
+    let currentDeviceDiagonal = Device.current.diagonal
 }

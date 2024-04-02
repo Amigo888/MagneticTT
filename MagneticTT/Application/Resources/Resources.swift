@@ -133,11 +133,11 @@ enum MainCategories: Int, CaseIterable {
     var title: String {
         switch self {
         case .homeCamera:
-            "Infrared Detection"
+            "Infrared \nDetection"
         case .bluetooth:
-            "Bluetooth Detection"
+            "Bluetooth \nDetection"
         case .magnetic:
-            "Magnetic Detection"
+            "Magnetic \nDetection"
         case .tips:
             "Antispy \nTips"
         }

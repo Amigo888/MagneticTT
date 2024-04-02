@@ -196,8 +196,8 @@
 				5F73FD4F2BB9D67000556D65 /* Resources */,
 				5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */,
 				5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */,
-				5F73FD482BB9D35700556D65 /* Info.plist */,
 				5F3293392BBC3BCA00C47208 /* ConfigFile.swift */,
+				5F73FD482BB9D35700556D65 /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
