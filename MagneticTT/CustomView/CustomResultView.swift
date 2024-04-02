@@ -67,7 +67,7 @@ final class CustomResultView: UIView {
         
         wifiName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(deviceFoundLabel.snp.bottom).offset(Constraints.Fixed.baseOffset8)
+            make.top.equalTo(deviceFoundLabel.snp.bottom)
         }
     }
 }
