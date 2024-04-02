@@ -85,7 +85,7 @@ final class MagneticViewController: UIViewController {
         searchButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
             make.height.equalTo(Constraints.Calculated.generalButtonHeight)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraints.Calculated.seacrhMagmeticButtonOffset)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraints.Calculated.generalButtonOffset)
         }
         
         searchCheckingLabel.snp.makeConstraints { make in

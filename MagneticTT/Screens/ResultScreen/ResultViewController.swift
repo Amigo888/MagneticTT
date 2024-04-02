@@ -23,14 +23,6 @@ final class ResultViewController: UIViewController {
     private lazy var customView = CustomResultView()
     private var viewModel = ResultViewModel()
     
-    private var customViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 26.375
-    }
-    
-    private var tableViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 21.1
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -59,14 +51,14 @@ final class ResultViewController: UIViewController {
     
     private func setupConstraints() {
         customView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(customViewTopOffset)
-            make.height.equalTo(customView.snp.width).dividedBy(6.48)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Constraints.Calculated.customViewTopOffset)
+            make.height.equalTo(customView.snp.width).dividedBy(Constraints.Fixed.customResultViewDividerHeight)
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
         }
         tableView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(customView.snp.bottom).offset(tableViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.top.equalTo(customView.snp.bottom).offset(Constraints.Calculated.tableViewTopOffset)
             make.bottom.equalToSuperview()
         }
     }
@@ -111,7 +103,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54
+        return Value.resultTableViewRowHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

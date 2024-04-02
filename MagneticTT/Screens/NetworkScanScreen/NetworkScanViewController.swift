@@ -61,7 +61,7 @@ final class NetworkScanViewController: UIViewController {
             scanWiFiLabel,
             wiFiNameLabel
         ])
-        stackView.spacing = 0
+        stackView.spacing = .zero
         stackView.axis = .vertical
         return stackView
     }()
@@ -71,26 +71,6 @@ final class NetworkScanViewController: UIViewController {
         button.addTarget(self, action: #selector(stopScan), for: .touchUpInside)
         return button
     }()
-    
-    private var stackViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 12.98
-    }
-    
-    private var animationViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 11.88
-    }
-    
-    private var stopButtonHeight: CGFloat {
-        return UIScreen.main.bounds.height / 16.88
-    }
-    
-    private var stopButtonBottomOffset: CGFloat {
-        return UIScreen.main.bounds.height / 23.44
-    }
-    
-    private var quantityLabelTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 26.375
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,13 +102,13 @@ final class NetworkScanViewController: UIViewController {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(stackViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Constraints.Calculated.stackViewNetworkTopOffset)
         }
         
         animationView.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(animationViewTopOffset)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(stackView.snp.bottom).offset(Constraints.Calculated.animationViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
             make.height.equalTo(animationView.snp.width)
         }
         
@@ -137,24 +117,24 @@ final class NetworkScanViewController: UIViewController {
         }
         
         quantityOfDevice.snp.makeConstraints { make in
-            make.top.equalTo(animationView.snp.bottom).offset(quantityLabelTopOffset)
-            make.centerX.equalToSuperview().offset(-60)
+            make.top.equalTo(animationView.snp.bottom).offset(Constraints.Calculated.quantityLabelTopOffset)
+            make.centerX.equalToSuperview().offset(Constraints.Fixed.quantityOfDevice)
         }
         
         deviceFoundLabel.snp.makeConstraints { make in
-            make.leading.equalTo(quantityOfDevice.snp.trailing).offset(8)
+            make.leading.equalTo(quantityOfDevice.snp.trailing).offset(Constraints.Fixed.baseOffset8)
             make.centerY.equalTo(quantityOfDevice)
         }
         
         stopButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(stopButtonHeight)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(stopButtonBottomOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.height.equalTo(Constraints.Calculated.generalButtonHeight)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraints.Calculated.generalButtonOffset)
         }
     }
     
     private func setupCornerButtonRadius() {
-        stopButton.layer.cornerRadius = stopButtonHeight / 2
+        stopButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
     }
     
     private func setupNavBar() {

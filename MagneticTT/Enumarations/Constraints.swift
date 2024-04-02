@@ -17,24 +17,32 @@ enum Constraints {
         static let baseOffset18: CGFloat = 18
         static let baseOffset8: CGFloat = 8
         static let circleSize: CGFloat = 32
+        static let quantityOfDevice: CGFloat = -60
         static let minimumInteritemSpacing: CGFloat = 38
         static let minimumLineSpacing: CGFloat = 35
         static let dividerForMainImage: CGFloat = 1.185
         static let circleGradientDividerHeight: CGFloat = 1.944
         static let customMainViewDividerHeight: CGFloat = 1.76
+        static let customResultViewDividerHeight: CGFloat = 6.48
     }
     
     enum Calculated {
         static let customMainViewTopOffset = uiscreenHeight / 16.88
         static let generalButtonHeight = uiscreenHeight / 16.88
-        static let seacrhMagmeticButtonOffset = uiscreenHeight / 23.44
+        static let generalButtonOffset = uiscreenHeight / 23.44
         static let circleGradientTopOffset = uiscreenHeight / 13.61
-        static let circleGradientTopOffsetSE = uiscreenHeight /  23
+        static let circleGradientTopOffsetSE = uiscreenHeight / 23
         static let searchCheckingLabelTopOffset = uiscreenHeight / 17.95
+        static let stackViewNetworkTopOffset = uiscreenHeight / 12.98
+        static let animationViewTopOffset = uiscreenHeight / 11.88
+        static let quantityLabelTopOffset = uiscreenHeight / 26.375
+        static let tableViewTopOffset = uiscreenHeight / 21.1
+        static let customViewTopOffset = uiscreenHeight / 26.375
     }
 }
 
 enum Value {
     static let base2: Int = 2
     static let deviceDiagonal: Double = 5.4
+    static let resultTableViewRowHeight: Double = 54
 }
