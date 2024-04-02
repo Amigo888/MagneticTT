@@ -76,6 +76,7 @@ final class NetworkScanViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addViews()
+        setupNavBar()
         setupConstraints()
     }
     
@@ -129,6 +130,10 @@ final class NetworkScanViewController: UIViewController {
             make.height.equalTo(50)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(36)
         }
+    }
+    
+    private func setupNavBar() {
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     private func setupLottieTransaction() {

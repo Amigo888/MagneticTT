@@ -25,11 +25,11 @@ final class DetailedViewController: UIViewController {
         setupConstraints()
         setupViewWithData()
         setupDetailedViewWithData()
+        setupNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavBar()
     }
     
     private func setupView() {
@@ -56,7 +56,7 @@ final class DetailedViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.customizeNavigationBar()
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     private func setupViewWithData() {

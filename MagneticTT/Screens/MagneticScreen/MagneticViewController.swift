@@ -41,7 +41,6 @@ final class MagneticViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addViews()
-        setupNavBar()
         setupConstaints()
     }
     
@@ -53,12 +52,6 @@ final class MagneticViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .backgroundColor
         title = "Magnetic Detection"
-    }
-    
-    private func setupNavBar() {
-        navigationController?.customizeNavigationBar(
-            backTitle: "Main"
-        )
     }
     
     private func addViews() {

@@ -64,7 +64,7 @@ final class ResultViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.customizeNavigationBar()
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     private func setupViewModel() {

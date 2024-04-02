@@ -20,8 +20,6 @@ final class MainViewController: UIViewController {
     
     private lazy var customFlowLayout: UICollectionViewFlowLayout = {
         let customFlowLayout = UICollectionViewFlowLayout()
-        customFlowLayout.itemSize = CGSize(width: 140, height: 140)
-        customFlowLayout.minimumInteritemSpacing = 38
         customFlowLayout.minimumLineSpacing = 35
         return customFlowLayout
     }()
@@ -30,7 +28,8 @@ final class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: customFlowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.isScrollEnabled = false
+        collectionView.isScrollEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: String(describing: CustomCell.self))
         collectionView.backgroundColor = .clear
         return collectionView
@@ -45,6 +44,7 @@ final class MainViewController: UIViewController {
         addViews()
         setupConstraints()
         setupViewAction()
+        setupNavBar()
     }
     
     private func setupView() {
@@ -61,6 +61,12 @@ final class MainViewController: UIViewController {
         view.addSubview(mainImage)
         view.addSubview(customMainView)
         view.addSubview(collectionView)
+    }
+    
+    private func setupNavBar() {
+        navigationItem.title = "Main"
+        navigationItem.titleView = UIView()
+        navigationItem.backButtonDisplayMode = .default
     }
     
     private func setupConstraints() {
@@ -133,5 +139,20 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .tips:
             print("Tips")
         }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let contentInsets = collectionView.contentInset
+        let totalContentWidth = collectionView.bounds.width - (contentInsets.left + contentInsets.right)
+        let numberOfColumns: CGFloat = 2
+        let spacingBetweenCells: CGFloat = 38
+        let totalSpacing = spacingBetweenCells * (numberOfColumns - 1)
+        let widthForItem = (totalContentWidth - totalSpacing) / numberOfColumns
+        
+        let heightForItem = widthForItem
+        
+        return CGSize(width: widthForItem, height: heightForItem)
     }
 }
