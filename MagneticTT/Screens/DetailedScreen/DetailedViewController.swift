@@ -34,7 +34,7 @@ final class DetailedViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
-        title = "Device Details"
+        title = Text.detailedViewTilte
     }
     
     private func addViews() {

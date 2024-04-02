@@ -11,7 +11,7 @@ import Lottie
 final class NetworkScanViewController: UIViewController {
     
     private lazy var animationView: LottieAnimationView = {
-        let animation = LottieAnimationView(name: "hc6 s")
+        let animation = LottieAnimationView(name: Text.nameLottieJSON)
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
         animation.animationSpeed = 1
@@ -19,14 +19,14 @@ final class NetworkScanViewController: UIViewController {
     }()
     
     private lazy var scanWiFiLabel = UILabel(
-        text: "Scanning Your Wi-Fi",
+        text: Text.scanWiFiLabel,
         textColor: .white,
         font: Resources.Font.robotoRegular(15)
     )
     
     private lazy var wiFiNameLabel: UILabel = {
         let label = UILabel(
-            text: "TLind_246_lp",
+            text: Text.wiFiNameLabel,
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -35,14 +35,14 @@ final class NetworkScanViewController: UIViewController {
     }()
     
     private lazy var percantIndicator = UILabel(
-        text: "20%",
+        text: "\(Text.percantIndicator)%",
         textColor: .white,
         font: Resources.Font.robotoMedium(17)
     )
     
     private lazy var quantityOfDevice: UILabel = {
         let label = UILabel(
-            text: "25",
+            text: Text.quantityOfDevice,
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -51,7 +51,7 @@ final class NetworkScanViewController: UIViewController {
     }()
     
     private lazy var deviceFoundLabel = UILabel(
-        text: "Devices Found...",
+        text: Text.deviceFoundLabel,
         textColor: .white,
         font: Resources.Font.robotoMedium(17)
     )
@@ -67,7 +67,7 @@ final class NetworkScanViewController: UIViewController {
     }()
     
     private lazy var stopButton: ReusableButton = {
-        let button = ReusableButton(title: "Stop")
+        let button = ReusableButton(title: Text.generalButtonStop)
         button.addTarget(self, action: #selector(stopScan), for: .touchUpInside)
         return button
     }()

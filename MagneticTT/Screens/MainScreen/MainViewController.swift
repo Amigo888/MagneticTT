@@ -81,7 +81,7 @@ final class MainViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationItem.title = "Main"
+        navigationItem.title = Text.mainViewTilte
         navigationItem.titleView = UIView()
         navigationItem.backButtonDisplayMode = .default
     }
@@ -148,7 +148,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .homeCamera:
             print("HomeCamera")
         case .magnetic:
-            print("magnetic")
+            print("Magnetic")
             let magneticVC = MagneticViewController()
             navigationController?.pushViewController(magneticVC, animated: true)
         case .tips:

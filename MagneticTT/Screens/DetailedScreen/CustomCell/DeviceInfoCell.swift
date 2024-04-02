@@ -60,16 +60,16 @@ final class DeviceInfoCell: UITableViewCell {
     func configure(with info: Devices, indexPath: Int) {
         switch indexPath {
         case 0:
-            categoryLabel.text = "Connection Type"
+            categoryLabel.text = Text.detailedConnectionType
             infoLabel.text = info.typeConnection.rawValue
         case 1:
-            categoryLabel.text = "IP Address"
+            categoryLabel.text = Text.detailedIPAddress
             infoLabel.text = info.ipAddress
         case 2:
-            categoryLabel.text = "MAC Address"
+            categoryLabel.text = Text.detailedMACAddress
             infoLabel.text = info.macAddress
         case 3:
-            categoryLabel.text = "Hostname"
+            categoryLabel.text = Text.detailedHostname
             infoLabel.text = info.hostName
         default:
             break

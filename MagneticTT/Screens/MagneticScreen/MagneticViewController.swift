@@ -14,14 +14,14 @@ final class MagneticViewController: UIViewController {
     private lazy var seacrhNiddle = createImageView(with: Resources.Image.niddle.image)
     
     private lazy var searchButton: ReusableButton = {
-        let button = ReusableButton(title: "Start")
+        let button = ReusableButton(title: Text.magneticButtonSearch)
         button.addTarget(self, action: #selector(startSearch), for: .touchUpInside)
         return button
     }()
     
     private lazy var searchCheckingLabel: UILabel = {
         let label = UILabel(
-            text: "Search checking",
+            text: Text.searchCheckingLabelText,
             textColor: .white,
             font: Resources.Font.robotoMedium(17)
         )
@@ -55,7 +55,7 @@ final class MagneticViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
-        title = "Magnetic Detection"
+        title = Text.magneticViewTilte
     }
     
     private func addViews() {
@@ -138,9 +138,9 @@ final class MagneticViewController: UIViewController {
         if isSearchingStarted {
             self.searchButton.isEnabled = false
             isSearchingStarted = false
-            searchButton.setTitle("Search", for: .normal)
+            searchButton.setTitle(Text.magneticButtonSearch, for: .normal)
             circle.backgroundColor = .customNiddleColor
-            searchCheckingLabel.text = "Search checking"
+            searchCheckingLabel.text = Text.searchCheckingLabelText
             seacrhNiddle.image = Resources.Image.niddle.image
             UIView.animate(withDuration: Value.baseZeroThree, delay: .zero, animations: {
                 self.seacrhNiddle.transform = .identity
@@ -154,7 +154,7 @@ final class MagneticViewController: UIViewController {
         isSearchingStarted = true
         circle.backgroundColor = .white
         seacrhNiddle.image = Resources.Image.niddle.image?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        searchButton.setTitle("Stop", for: .normal)
+        searchButton.setTitle(Text.generalButtonStop, for: .normal)
         animateArrow()
     }
 }

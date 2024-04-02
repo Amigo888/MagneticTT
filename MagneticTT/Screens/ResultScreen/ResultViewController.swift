@@ -41,7 +41,7 @@ final class ResultViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
-        title = "Result"
+        title = Text.resultViewTilte
     }
     
     private func addViews() {
