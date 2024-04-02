@@ -16,7 +16,7 @@ final class ResultViewController: UIViewController {
     )
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
@@ -25,16 +25,22 @@ final class ResultViewController: UIViewController {
         return tableView
     }()
     
+    private var viewModel = ResultViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupNavBar()
         addViews()
         setupConstraints()
+        setupViewModel()
+        viewModel.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func setupView() {
@@ -69,11 +75,26 @@ final class ResultViewController: UIViewController {
         backButton.tintColor = .customPurpleLight
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
+    
+    private func setupViewModel() {
+        viewModel.onItemsUpdated = { [weak self] in
+            guard let self = self else { return }
+            self.reloadTableViewData()
+        }
+    }
+    
+    private func reloadTableViewData() {
+        DispatchQueue.main.async {
+            UIView.performWithoutAnimation {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return viewModel.devices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +104,12 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? TableViewCustomCell else {
             return UITableViewCell()
         }
-        cell.backgroundColor = .red
+        let device = viewModel.devices[indexPath.row]
+        cell.configure(device: device)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 54
     }
 }

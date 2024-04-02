@@ -49,7 +49,7 @@ final class NetworkScanViewController: UIViewController {
     
     private lazy var quantityOfDevice: UILabel = {
         let label = UILabel(
-            text: "23",
+            text: "25",
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -80,7 +80,11 @@ final class NetworkScanViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var stopButton = ReusableButton(title: "Stop")
+    private lazy var stopButton: ReusableButton = {
+        let button = ReusableButton(title: "Stop")
+        button.addTarget(self, action: #selector(stopScan), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,8 +147,12 @@ final class NetworkScanViewController: UIViewController {
     
     private func setupLottieTransaction() {
         animationView.play()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.navigationController?.pushViewController(ResultViewController(), animated: true)
         }
+    }
+    
+    @objc private func stopScan() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -15,6 +15,9 @@ enum Resources {
         case filterButton
         case circleGradient
         case niddle
+        case connectedWiFi
+        case notConnectedWiFi
+        case chevronLeft
         
         var image: UIImage? {
             switch self {
@@ -32,6 +35,16 @@ enum Resources {
                 
             case .niddle:
                 return UIImage(named: "niddle")
+            
+            case .connectedWiFi:
+                return UIImage(named: "connectedWiFi")
+            
+            case .notConnectedWiFi:
+                return UIImage(named: "notConnectedWiFi")
+            
+            case .chevronLeft:
+                return UIImage(named: "chevronLeft")
+                
             }
         }
     }
