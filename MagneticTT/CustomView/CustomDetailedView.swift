@@ -40,6 +40,7 @@ final class CustomDetailedView: UIView {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isScrollEnabled = false
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.register(DeviceInfoCell.self)
@@ -59,15 +60,15 @@ final class CustomDetailedView: UIView {
         setupConstraints()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     // MARK: - LayoutSubviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
         typeOfDevice.addShadowToText(shadow: NSShadow.shadowCreate())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     // MARK: - Private Methods

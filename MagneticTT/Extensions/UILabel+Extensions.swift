@@ -27,6 +27,7 @@ extension UILabel {
         self.font = font
         self.textAlignment = alignment
         self.numberOfLines = numberOfLines
+        setKernValue(kern)
     }
     
     // MARK: - Private Method
