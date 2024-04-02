@@ -20,8 +20,8 @@ final class MainViewController: UIViewController {
     
     private lazy var customFlowLayout: UICollectionViewFlowLayout = {
         let customFlowLayout = UICollectionViewFlowLayout()
-        customFlowLayout.minimumLineSpacing = 35
-        customFlowLayout.minimumInteritemSpacing = 38
+        customFlowLayout.minimumLineSpacing = Constraints.Fixed.minimumLineSpacing
+        customFlowLayout.minimumInteritemSpacing = Constraints.Fixed.minimumInteritemSpacing
         return customFlowLayout
     }()
     
@@ -29,7 +29,7 @@ final class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: customFlowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        if currentDiagonal >= 5.4 {
+        if currentDiagonal >= Value.deviceDiagonal {
             collectionView.isScrollEnabled = false
         } else {
             collectionView.isScrollEnabled = true
@@ -37,17 +37,18 @@ final class MainViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: String(describing: CustomCell.self))
         collectionView.backgroundColor = .clear
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 8, right: 18)
+        collectionView.contentInset = UIEdgeInsets(
+            top: .zero,
+            left: Constraints.Fixed.baseOffset18,
+            bottom: Constraints.Fixed.baseOffset8,
+            right: Constraints.Fixed.baseOffset18
+        )
         return collectionView
     }()
     
     private let collectionViewCases = MainCategories.allCases
     private let currentDiagonal = ConfigFile.shared.currentDeviceDiagonal
-    
-    private var customMainViewTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 16.88
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -88,18 +89,18 @@ final class MainViewController: UIViewController {
     private func setupConstraints() {
         mainImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(mainImage.snp.width).dividedBy(1.185)
+            make.height.equalTo(mainImage.snp.width).dividedBy(Constraints.Fixed.dividerForMainImage)
         }
         
         customMainView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(customMainView.snp.width).dividedBy(1.76)
-            make.top.equalTo(mainImage.snp.bottom).inset(customMainViewTopOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.height.equalTo(customMainView.snp.width).dividedBy(Constraints.Fixed.customMainViewDividerHeight)
+            make.top.equalTo(mainImage.snp.bottom).inset(Constraints.Calculated.customMainViewTopOffset)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(customMainView.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(18)
+            make.top.equalTo(customMainView.snp.bottom).offset(Constraints.Fixed.baseOffset16)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset18)
             make.bottom.equalToSuperview()
         }
     }
@@ -113,9 +114,7 @@ final class MainViewController: UIViewController {
         }
     }
     
-    @objc private func settingButtonTapped() {
-        print("TEST")
-    }
+    @objc private func settingButtonTapped() {}
     
     @objc private func scanNetwork() {
         let networkScanVC = NetworkScanViewController()
@@ -166,8 +165,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewContentInset: CGFloat = 18
-        let distanceBetweenItems: CGFloat = 38
+        let collectionViewContentInset: CGFloat = Constraints.Fixed.baseOffset18
+        let distanceBetweenItems: CGFloat = Constraints.Fixed.minimumInteritemSpacing
         let cellWidth = (collectionView.frame.width - distanceBetweenItems - collectionViewContentInset * 2) / 2
         let cellHeight = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)

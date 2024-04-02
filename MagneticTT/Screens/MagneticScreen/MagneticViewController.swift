@@ -39,26 +39,6 @@ final class MagneticViewController: UIViewController {
     private let devices = ConfigFile.shared.smallIphone
     private var isSearchingStarted: Bool = false
     
-    private var searcButtonHeight: CGFloat {
-        return UIScreen.main.bounds.height / 16.88
-    }
-    
-    private var searcButtonBottomOffset: CGFloat {
-        return UIScreen.main.bounds.height / 23.44
-    }
-    
-    private var circleGradientTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 13.61
-    }
-    
-    private var circleGradientTopOffsetSE: CGFloat {
-        return UIScreen.main.bounds.height / 23
-    }
-    
-    private var searchCheckingLabelTopOffset: CGFloat {
-        return UIScreen.main.bounds.height / 17.95
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -89,32 +69,32 @@ final class MagneticViewController: UIViewController {
     private func setupConstaints() {
         detectorImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(detectorImage.snp.width).dividedBy(1.185)
+            make.height.equalTo(detectorImage.snp.width).dividedBy(Constraints.Fixed.dividerForMainImage)
         }
         
         circleGradient.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(circleGradient.snp.width).dividedBy(1.944)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.height.equalTo(circleGradient.snp.width).dividedBy(Constraints.Fixed.circleGradientDividerHeight)
             if currentDevice.isOneOf(devices) {
-                make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffsetSE)
+                make.top.equalTo(detectorImage.snp.bottom).offset(Constraints.Calculated.circleGradientTopOffsetSE)
             } else {
-                make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffset)
+                make.top.equalTo(detectorImage.snp.bottom).offset(Constraints.Calculated.circleGradientTopOffset)
             }
         }
         
         searchButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(searcButtonHeight)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(searcButtonBottomOffset)
+            make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset20)
+            make.height.equalTo(Constraints.Calculated.generalButtonHeight)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraints.Calculated.seacrhMagmeticButtonOffset)
         }
         
         searchCheckingLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(circleGradient.snp.bottom).offset(searchCheckingLabelTopOffset)
+            make.top.equalTo(circleGradient.snp.bottom).offset(Constraints.Calculated.searchCheckingLabelTopOffset)
         }
         
         circle.snp.makeConstraints { make in
-            make.size.equalTo(32)
+            make.size.equalTo(Constraints.Fixed.circleSize)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -128,7 +108,7 @@ final class MagneticViewController: UIViewController {
     }
     
     private func setupCornerButtonRadius() {
-        searchButton.layer.cornerRadius = searcButtonHeight / 2
+        searchButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
     }
     
     private func animateArrow() {

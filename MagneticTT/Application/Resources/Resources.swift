@@ -31,25 +31,25 @@ enum Resources {
                 
             case .filterButton:
                 return UIImage(named: "filterButton")
-            
+                
             case .circleGradient:
                 return UIImage(named: "circleGradient")
                 
             case .niddle:
                 return UIImage(named: "niddle")
-            
+                
             case .connectedWiFi:
                 return UIImage(named: "connectedWiFi")
-            
+                
             case .notConnectedWiFi:
                 return UIImage(named: "notConnectedWiFi")
-            
+                
             case .chevronLeft:
                 return UIImage(named: "chevronLeft")
-            
+                
             case .deviceConnected:
                 return UIImage(named: "deviceConnected")
-            
+                
             case .deviceNoConnected:
                 return UIImage(named: "deviceNoConnected")
                 
@@ -104,42 +104,6 @@ enum Resources {
         
         static func robotoBlack(_ size: CGFloat) -> UIFont {
             return UIFont(name: "Roboto-Black", size: size)!
-        }
-    }
-}
-
-enum MainCategories: Int, CaseIterable {
-    case homeCamera
-    case bluetooth
-    case magnetic
-    case tips
-    
-    var image: UIImage? {
-        switch self {
-        case .homeCamera:
-            return UIImage(named: "homeCamera")
-            
-        case .bluetooth:
-            return UIImage(named: "bluetooth")
-            
-        case .magnetic:
-            return UIImage(named: "magnetic")
-            
-        case .tips:
-            return UIImage(named: "tips")
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .homeCamera:
-            "Infrared \nDetection"
-        case .bluetooth:
-            "Bluetooth \nDetection"
-        case .magnetic:
-            "Magnetic \nDetection"
-        case .tips:
-            "Antispy \nTips"
         }
     }
 }
