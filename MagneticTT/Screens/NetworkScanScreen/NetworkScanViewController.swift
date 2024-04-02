@@ -74,6 +74,9 @@ final class NetworkScanViewController: UIViewController {
         return button
     }()
     
+    private var currentPercentage: Int = 0
+    private var timer: Timer?
+    
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
@@ -91,6 +94,14 @@ final class NetworkScanViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         setupLottieTransaction()
+        startProgressAnimation()
+    }
+    
+    // MARK: - ViewDidDisappear
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopProgressAnimation()
     }
     
     // MARK: - Private Methods
@@ -155,6 +166,27 @@ final class NetworkScanViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
+    }
+    
+    private func stopProgressAnimation() {
+        timer?.invalidate()
+        timer = nil
+        currentPercentage = 0
+        percantIndicator.text = "\(currentPercentage)%"
+    }
+    
+    private func startProgressAnimation() {
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updatePercentage), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updatePercentage() {
+        guard currentPercentage < 100 else {
+            timer?.invalidate()
+            timer = nil
+            return
+        }
+        currentPercentage += 1
+        percantIndicator.text = "\(currentPercentage)%"
     }
     
     @objc private func stopScan() {
