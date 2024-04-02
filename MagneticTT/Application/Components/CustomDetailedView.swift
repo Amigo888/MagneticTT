@@ -11,6 +11,7 @@ final class CustomDetailedView: UIView {
     
     private lazy var typeOfDevice: UILabel = {
         let label = UILabel(
+            textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
         label.addShadowToText(shadow: NSShadow.shadowCreate())
@@ -82,7 +83,7 @@ final class CustomDetailedView: UIView {
         guard let info = detailedInfo else {
             return
         }
-        typeOfDevice.textColor = info.isConnected ? .customPurpleLight : .red
+        typeOfDevice.textColor = info.isConnected ? .customPurpleLight : .customRedColor
         typeOfDevice.text = info.routerName
         ipAddress.text = info.ipAddress
     }

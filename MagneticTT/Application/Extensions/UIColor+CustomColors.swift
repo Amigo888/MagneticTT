@@ -14,4 +14,5 @@ extension UIColor {
     static let customPurpleLight = UIColor(named: "purpleLight")
     static let customDarkGrey = UIColor(named: "customDarkGray")
     static let customNiddleColor = UIColor(named: "customSearchNiddle")
+    static let customRedColor = UIColor(named: "customRed")
 }

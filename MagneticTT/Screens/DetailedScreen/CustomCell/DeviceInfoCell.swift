@@ -61,7 +61,7 @@ final class DeviceInfoCell: UITableViewCell {
         switch indexPath {
         case 0:
             categoryLabel.text = "Connection Type"
-            infoLabel.text = "Wifi"
+            infoLabel.text = info.typeConnection.rawValue
         case 1:
             categoryLabel.text = "IP Address"
             infoLabel.text = info.ipAddress
