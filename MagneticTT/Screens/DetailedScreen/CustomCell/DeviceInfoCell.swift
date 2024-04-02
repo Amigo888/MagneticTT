@@ -57,7 +57,7 @@ final class DeviceInfoCell: UITableViewCell {
         }
     }
     
-    func configure() {
+    func configure(with info: Devices) {
         categoryLabel.text = "Hi"
         infoLabel.text = "Dima"
     }

@@ -16,9 +16,7 @@ final class DetailedViewController: UIViewController {
     }()
     
     private lazy var detailedView = CustomDetailedView()
-    
     var deviceInfo: Devices?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +25,7 @@ final class DetailedViewController: UIViewController {
         addViews()
         setupConstraints()
         setupViewWithData()
+        setupDetailedViewWithData()
     }
     
     private func setupView() {
@@ -70,6 +69,11 @@ final class DetailedViewController: UIViewController {
         (mainImage.image = Resources.Image.deviceConnected.image) :
         (mainImage.image = Resources.Image.deviceNoConnected.image)
         
+        detailedView.detailedInfo = deviceInfo
+    }
+    
+    private func setupDetailedViewWithData() {
+        detailedView.setupViewWithData()
     }
 }
 
