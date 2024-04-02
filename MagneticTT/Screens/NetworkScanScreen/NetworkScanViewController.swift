@@ -30,14 +30,7 @@ final class NetworkScanViewController: UIViewController {
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
-        let shadow = NSShadow.shadowCreate()
-        let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(
-            NSAttributedString.Key.shadow,
-            value: shadow,
-            range: NSRange(location: 0, length: attributedString.length)
-        )
-        label.attributedText = attributedString
+        label.addShadowToText(shadow: NSShadow.shadowCreate())
         return label
     }()
     
@@ -53,14 +46,7 @@ final class NetworkScanViewController: UIViewController {
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
-        let shadow = NSShadow.shadowCreate()
-        let attributedString = NSMutableAttributedString(string: label.text ?? "")
-        attributedString.addAttribute(
-            NSAttributedString.Key.shadow,
-            value: shadow,
-            range: NSRange(location: 0, length: attributedString.length)
-        )
-        label.attributedText = attributedString
+        label.addShadowToText(shadow: NSShadow.shadowCreate())
         return label
     }()
     

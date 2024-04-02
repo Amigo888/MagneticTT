@@ -31,4 +31,11 @@ extension UILabel {
         attributedString.addAttribute(.kern, value: kern, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString
     }
+    
+    func addShadowToText(shadow: NSShadow) {
+        guard let labelText = self.text else { return }
+        let attributedString = NSMutableAttributedString(string: labelText)
+        attributedString.addAttribute(.shadow, value: shadow, range: NSRange(location: 0, length: attributedString.length))
+        self.attributedText = attributedString
+    }
 }
