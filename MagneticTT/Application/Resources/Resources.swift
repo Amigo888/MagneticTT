@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Enum Resources
+
 enum Resources {
+    
+    // MARK: - Enum Image
     
     enum Image {
         case mainImage
@@ -56,6 +60,8 @@ enum Resources {
             }
         }
     }
+    
+    // MARK: - Enum Font
     
     enum Font {
         static func robotoMedium(_ size: CGFloat) -> UIFont {

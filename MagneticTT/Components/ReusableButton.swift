@@ -21,7 +21,7 @@ final class ReusableButton: UIButton {
         super.init(coder: coder)
     }
     
-    //MARK: - Private Method
+    // MARK: - Private Method
     
     private func configureButton() {
         setTitleColor(.white, for: .normal)

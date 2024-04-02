@@ -7,10 +7,14 @@
 
 import Foundation
 
+// MARK: - TypeConnection
+
 enum TypeConnection: String {
     case WiFi
     case WLAN
 }
+
+// MARK: - Devices
 
 struct Devices {
     let routerName: String
@@ -24,12 +28,13 @@ struct Devices {
 final class ResultViewModel {
     
     var onItemsUpdated: (() -> Void)?
-    
     var devices: [Devices] = [] {
         didSet {
             onItemsUpdated?()
         }
     }
+    
+    // MARK: - Method
     
     func fetchData() {
         let devicesArray = [

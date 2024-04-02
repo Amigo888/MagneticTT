@@ -10,6 +10,8 @@ import Lottie
 
 final class NetworkScanViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private lazy var animationView: LottieAnimationView = {
         let animation = LottieAnimationView(name: Text.nameLottieJSON)
         animation.contentMode = .scaleAspectFit
@@ -72,6 +74,8 @@ final class NetworkScanViewController: UIViewController {
         return button
     }()
     
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -81,11 +85,15 @@ final class NetworkScanViewController: UIViewController {
         setupCornerButtonRadius()
     }
     
+    // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         setupLottieTransaction()
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         view.backgroundColor = .backgroundColor

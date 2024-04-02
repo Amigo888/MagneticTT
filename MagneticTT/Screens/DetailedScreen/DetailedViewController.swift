@@ -9,6 +9,8 @@ import UIKit
 
 final class DetailedViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private lazy var mainImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -16,8 +18,13 @@ final class DetailedViewController: UIViewController {
     }()
     
     private lazy var detailedView = CustomDetailedView()
+    
+    // MARK: - Property
+    
     var deviceInfo: Devices?
-
+    
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -28,9 +35,13 @@ final class DetailedViewController: UIViewController {
         setupNavBar()
     }
     
+    // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         view.backgroundColor = .backgroundColor

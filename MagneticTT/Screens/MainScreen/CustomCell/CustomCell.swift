@@ -9,6 +9,8 @@ import UIKit
 
 final class CustomCell: UICollectionViewCell {
     
+    // MARK: - Private Properties
+    
     private lazy var categoryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -35,6 +37,8 @@ final class CustomCell: UICollectionViewCell {
     private let currentDevice = ConfigFile.shared.currentDevice
     private let devices = ConfigFile.shared.smallIphone
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -45,6 +49,8 @@ final class CustomCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupCell() {
         contentView.backgroundColor = .cellBackgroundColor
@@ -82,6 +88,8 @@ final class CustomCell: UICollectionViewCell {
             make.width.equalTo(categoryImage.snp.height).dividedBy(Constraints.Fixed.categoryImageDividerWidth)
         }
     }
+    
+    // MARK: - Method
     
     func configureCell(category: MainCategories) {
         categoryName.text = category.title

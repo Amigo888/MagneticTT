@@ -9,6 +9,8 @@ import UIKit
 
 final class MagneticViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private lazy var detectorImage = createImageView(with: Resources.Image.detectorImage.image)
     private lazy var circleGradient = createImageView(with: Resources.Image.circleGradient.image)
     private lazy var seacrhNiddle = createImageView(with: Resources.Image.niddle.image)
@@ -40,6 +42,8 @@ final class MagneticViewController: UIViewController {
     private let devices = ConfigFile.shared.smallIphone
     private var isSearchingStarted: Bool = false
     
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -48,10 +52,14 @@ final class MagneticViewController: UIViewController {
         setupCornerButtonRadius()
     }
     
+    // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
@@ -133,7 +141,7 @@ final class MagneticViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
-
+    
     @objc private func startSearch() {
         if isSearchingStarted {
             self.searchButton.isEnabled = false

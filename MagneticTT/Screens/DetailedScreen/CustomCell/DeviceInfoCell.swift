@@ -10,6 +10,8 @@ import UIKit
 
 final class DeviceInfoCell: UITableViewCell {
     
+    // MARK: - Private Properties
+    
     private lazy var categoryLabel = UILabel(
         textColor: .white,
         font: Resources.Font.robotoRegular(17)
@@ -30,6 +32,8 @@ final class DeviceInfoCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -40,6 +44,8 @@ final class DeviceInfoCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupCell() {
         backgroundColor = .infoWiFiBackground
@@ -56,6 +62,8 @@ final class DeviceInfoCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset16)
         }
     }
+    
+    // MARK: - Method
     
     func configure(with info: Devices, indexPath: Int) {
         switch indexPath {

@@ -11,7 +11,7 @@ import UIKit
 
 extension NSShadow {
     
-    // MARK: - Method
+    // MARK: - Static Method
     
     static func shadowCreate() -> NSShadow {
         let shadow = NSShadow()

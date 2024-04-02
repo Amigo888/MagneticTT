@@ -9,6 +9,8 @@ import UIKit
 
 final class TableViewCustomCell: UITableViewCell {
     
+    // MARK: - Private Properties
+    
     private lazy var wifiImage: UIImageView = {
         let imageView = UIImageView(image: Resources.Image.connectedWiFi.image)
         imageView.contentMode = .scaleAspectFit
@@ -42,6 +44,8 @@ final class TableViewCustomCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -52,6 +56,8 @@ final class TableViewCustomCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupCell() {
         backgroundColor = .infoWiFiBackground
@@ -83,6 +89,8 @@ final class TableViewCustomCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(Constraints.Fixed.baseOffset16)
         }
     }
+    
+    // MARK: - Method
     
     func configure(device: Devices) {
         routerName.text = device.routerName

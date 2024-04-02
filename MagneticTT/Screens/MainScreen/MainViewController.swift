@@ -10,6 +10,8 @@ import SnapKit
 
 final class MainViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private lazy var mainImage: UIImageView = {
         let imageView = UIImageView(image: Resources.Image.mainImage.image)
         imageView.contentMode = .scaleAspectFit
@@ -48,6 +50,8 @@ final class MainViewController: UIViewController {
     
     private let collectionViewCases = MainCategories.allCases
     private let currentDiagonal = ConfigFile.shared.currentDeviceDiagonal
+    
+    // MARK: - ViewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +61,16 @@ final class MainViewController: UIViewController {
         setupViewAction()
     }
     
+    // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         setupNavBar()
         setupHeader()
     }
+    
+    // MARK: - Private Mehods
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
@@ -122,8 +130,9 @@ final class MainViewController: UIViewController {
     }
 }
 
+// MARK: - Extension UICollectionViewDataSource
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionViewCases.count
@@ -140,7 +149,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCell(category: type)
         return cell
     }
-    
+}
+
+
+// MARK: - Extension UICollectionViewDelegate
+
+extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionViewCases[indexPath.row] {
         case .bluetooth:
@@ -162,6 +176,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
     }
 }
+
+// MARK: - Extension UICollectionViewDelegateFlowLayout
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

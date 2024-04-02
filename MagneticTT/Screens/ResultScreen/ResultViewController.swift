@@ -9,6 +9,8 @@ import UIKit
 
 final class ResultViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -21,7 +23,12 @@ final class ResultViewController: UIViewController {
     }()
     
     private lazy var customView = CustomResultView()
+    
+    // MARK: - ViewModel
+    
     private var viewModel = ResultViewModel()
+    
+    // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +40,15 @@ final class ResultViewController: UIViewController {
         viewModel.fetchData()
     }
     
+    // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         view.backgroundColor = .backgroundColor
@@ -85,7 +96,10 @@ final class ResultViewController: UIViewController {
     }
 }
 
-extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Extension UITableViewDataSource
+
+extension ResultViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.devices.count
     }
@@ -101,6 +115,11 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(device: device)
         return cell
     }
+}
+
+// MARK: - Extension UITableViewDelegate
+
+extension ResultViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Value.resultTableViewRowHeight
