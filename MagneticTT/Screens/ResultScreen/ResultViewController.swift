@@ -110,11 +110,20 @@ extension ResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(TableViewCustomCell.self)
         let device = viewModel.devices[indexPath.row]
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+        
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1{
+            cell.layer.cornerRadius = 8
+            cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+        } else if indexPath.row == 0  {
+            cell.layer.cornerRadius = 8
+            cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         } else {
+            cell.layer.cornerRadius = 0
+            cell.layer.maskedCorners = []
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
+        
         cell.configure(device: device)
         cell.layoutMargins = .zero
         return cell
