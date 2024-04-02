@@ -35,6 +35,8 @@ final class MagneticViewController: UIViewController {
         return view
     }()
     
+    private let currentDevice = ConfigFile.shared.currentDevice
+    private let devices = ConfigFile.shared.smallIphone
     private var isSearchingStarted: Bool = false
     
     private var searcButtonHeight: CGFloat {
@@ -47,6 +49,10 @@ final class MagneticViewController: UIViewController {
     
     private var circleGradientTopOffset: CGFloat {
         return UIScreen.main.bounds.height / 13.61
+    }
+    
+    private var circleGradientTopOffsetSE: CGFloat {
+        return UIScreen.main.bounds.height / 23
     }
     
     private var searchCheckingLabelTopOffset: CGFloat {
@@ -89,7 +95,11 @@ final class MagneticViewController: UIViewController {
         circleGradient.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(circleGradient.snp.width).dividedBy(1.944)
-            make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffset)
+            if currentDevice.isOneOf(devices) {
+                make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffsetSE)
+            } else {
+                make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffset)
+            }
         }
         
         searchButton.snp.makeConstraints { make in

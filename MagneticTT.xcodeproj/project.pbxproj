@@ -20,6 +20,8 @@
 		5F32932D2BBC04B800C47208 /* CustomDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */; };
 		5F3293302BBC057500C47208 /* DeviceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32932F2BBC057500C47208 /* DeviceInfoCell.swift */; };
 		5F3293342BBC1AC700C47208 /* CustomMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293332BBC1AC700C47208 /* CustomMainView.swift */; };
+		5F3293382BBC3A1900C47208 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F3293372BBC3A1900C47208 /* DeviceKit */; };
+		5F32933A2BBC3BCA00C47208 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293392BBC3BCA00C47208 /* ConfigFile.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -59,6 +61,7 @@
 		5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailedView.swift; sourceTree = "<group>"; };
 		5F32932F2BBC057500C47208 /* DeviceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCell.swift; sourceTree = "<group>"; };
 		5F3293332BBC1AC700C47208 /* CustomMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMainView.swift; sourceTree = "<group>"; };
+		5F3293392BBC3BCA00C47208 /* ConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 			files = (
 				5F73FD7A2BB9E5CC00556D65 /* Lottie in Frameworks */,
 				5F73FD7D2BB9E5DD00556D65 /* SnapKit in Frameworks */,
+				5F3293382BBC3A1900C47208 /* DeviceKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +197,7 @@
 				5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */,
 				5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */,
 				5F73FD482BB9D35700556D65 /* Info.plist */,
+				5F3293392BBC3BCA00C47208 /* ConfigFile.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			packageProductDependencies = (
 				5F73FD792BB9E5CC00556D65 /* Lottie */,
 				5F73FD7C2BB9E5DD00556D65 /* SnapKit */,
+				5F3293372BBC3A1900C47208 /* DeviceKit */,
 			);
 			productName = MagneticTT;
 			productReference = 5F73FD372BB9D35600556D65 /* MagneticTT.app */;
@@ -342,6 +348,7 @@
 			packageReferences = (
 				5F73FD782BB9E5CC00556D65 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				5F73FD7B2BB9E5DD00556D65 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				5F3293362BBC3A1900C47208 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
 			productRefGroup = 5F73FD382BB9D35600556D65 /* Products */;
 			projectDirPath = "";
@@ -383,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */,
+				5F32933A2BBC3BCA00C47208 /* ConfigFile.swift in Sources */,
 				5F3293262BBBEB0F00C47208 /* ResultViewModel.swift in Sources */,
 				5F32932B2BBBFF4100C47208 /* DetailedViewController.swift in Sources */,
 				5F73FD742BB9DD7B00556D65 /* UIColor+CustomColors.swift in Sources */,
@@ -617,6 +625,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F3293362BBC3A1900C47208 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
 		5F73FD782BB9E5CC00556D65 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -636,6 +652,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F3293372BBC3A1900C47208 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F3293362BBC3A1900C47208 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
 		5F73FD792BB9E5CC00556D65 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5F73FD782BB9E5CC00556D65 /* XCRemoteSwiftPackageReference "lottie-spm" */;
