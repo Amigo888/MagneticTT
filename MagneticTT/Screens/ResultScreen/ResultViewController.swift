@@ -112,6 +112,9 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedDevice = viewModel.devices[indexPath.row]
+        let detailedVC = DetailedViewController()
+        detailedVC.deviceInfo = selectedDevice
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
 }

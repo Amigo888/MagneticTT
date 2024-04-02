@@ -18,6 +18,8 @@ enum Resources {
         case connectedWiFi
         case notConnectedWiFi
         case chevronLeft
+        case deviceConnected
+        case deviceNoConnected
         
         var image: UIImage? {
             switch self {
@@ -44,6 +46,12 @@ enum Resources {
             
             case .chevronLeft:
                 return UIImage(named: "chevronLeft")
+            
+            case .deviceConnected:
+                return UIImage(named: "deviceConnected")
+            
+            case .deviceNoConnected:
+                return UIImage(named: "deviceNoConnected")
                 
             }
         }
