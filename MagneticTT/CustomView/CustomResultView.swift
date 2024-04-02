@@ -11,7 +11,7 @@ final class CustomResultView: UIView {
     
     private lazy var quantityOfDevice: UILabel = {
         let label = UILabel(
-            text: "5",
+            text: Text.quantityOfResultDevice,
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -20,12 +20,12 @@ final class CustomResultView: UIView {
     }()
     
     private lazy var deviceFoundLabel = UILabel(
-        text: "Devices",
+        text: Text.deviceFoundResultLabel,
         textColor: .white,
         font: Resources.Font.robotoBold(28)
     )
     private lazy var wifiName = UILabel(
-        text: "WIFI_Name",
+        text: Text.wiFiNameMainLabel,
         textColor: .customDarkGrey,
         font: Resources.Font.robotoRegular(15)
     )

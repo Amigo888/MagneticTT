@@ -10,14 +10,14 @@ import UIKit
 final class CustomMainView: UIView {
     
     private lazy var currentWiFiLabel = UILabel(
-        text: "Current Wi-Fi",
+        text: Text.currentWiFiLabel,
         textColor: .white,
         font: Resources.Font.robotoRegular(15)
     )
     
     private lazy var wiFiNameLabel: UILabel = {
         let label = UILabel(
-            text: "WIFI_Name",
+            text: Text.wiFiNameMainLabel,
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -26,13 +26,13 @@ final class CustomMainView: UIView {
     }()
     
     private lazy var readyScanLabel = UILabel(
-        text: "Ready to Scan this network",
+        text: Text.readyScanLabel,
         textColor: .customDarkGrey,
         font: Resources.Font.robotoRegular(17)
     )
     
     private lazy var scanButton: ReusableButton = {
-        let button = ReusableButton(title: "Scan current network")
+        let button = ReusableButton(title: Text.scanButton)
         button.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -88,7 +88,7 @@ final class CustomMainView: UIView {
     }
     
     private func setupCornerButtonRadius() {
-        scanButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
+        scanButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / Value.baseTwo
     }
     
     @objc private func scanButtonTapped() {

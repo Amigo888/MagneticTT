@@ -11,7 +11,7 @@ final class CustomDetailedView: UIView {
     
     private lazy var typeOfDevice: UILabel = {
         let label = UILabel(
-            text: "Router",
+            text: Text.typeOfDevice,
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )

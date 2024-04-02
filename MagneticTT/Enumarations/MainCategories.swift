@@ -32,13 +32,13 @@ enum MainCategories: Int, CaseIterable {
     var title: String {
         switch self {
         case .homeCamera:
-            "Infrared \nDetection"
+            Text.categoryHomeCamera
         case .bluetooth:
-            "Bluetooth \nDetection"
+            Text.categoryBluetooth
         case .magnetic:
-            "Magnetic \nDetection"
+            Text.categoryMagnetic
         case .tips:
-            "Antispy \nTips"
+            Text.categoryTips
         }
     }
 }
