@@ -43,6 +43,9 @@ final class CustomDetailedView: UIView {
         tableView.isScrollEnabled = false
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
+        tableView.separatorColor = .customDarkGrey
+        tableView.separatorInset = .zero
+        tableView.separatorStyle = .singleLine
         tableView.register(DeviceInfoCell.self)
         return tableView
     }()
@@ -122,6 +125,7 @@ extension CustomDetailedView: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(with: info, indexPath: indexPath.row)
+        cell.layoutMargins = .zero
         return cell
     }
 }

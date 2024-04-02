@@ -17,6 +17,9 @@ final class ResultViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
+        tableView.separatorColor = .customDarkGrey
+        tableView.separatorInset = .zero
+        tableView.separatorStyle = .singleLine
         tableView.layer.cornerRadius = 8
         tableView.register(TableViewCustomCell.self)
         return tableView
@@ -108,6 +111,7 @@ extension ResultViewController: UITableViewDataSource {
         let cell = tableView.dequeue(TableViewCustomCell.self)
         let device = viewModel.devices[indexPath.row]
         cell.configure(device: device)
+        cell.layoutMargins = .zero
         return cell
     }
 }
