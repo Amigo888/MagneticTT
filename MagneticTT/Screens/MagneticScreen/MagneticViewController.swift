@@ -37,11 +37,29 @@ final class MagneticViewController: UIViewController {
     
     private var isSearchingStarted: Bool = false
     
+    private var searcButtonHeight: CGFloat {
+        return UIScreen.main.bounds.height / 16.88
+    }
+    
+    private var searcButtonBottomOffset: CGFloat {
+        return UIScreen.main.bounds.height / 23.44
+    }
+    
+    private var circleGradientTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 13.61
+    }
+    
+    private var searchCheckingLabelTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 17.95
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addViews()
         setupConstaints()
+        print(searcButtonHeight)
+        searchButton.layer.cornerRadius = searcButtonHeight / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,18 +90,18 @@ final class MagneticViewController: UIViewController {
         circleGradient.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(circleGradient.snp.width).dividedBy(1.944)
-            make.top.equalTo(detectorImage.snp.bottom).offset(62)
+            make.top.equalTo(detectorImage.snp.bottom).offset(circleGradientTopOffset)
         }
         
         searchButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(36)
+            make.height.equalTo(searcButtonHeight)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(searcButtonBottomOffset)
         }
         
         searchCheckingLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(circleGradient.snp.bottom).offset(47)
+            make.top.equalTo(circleGradient.snp.bottom).offset(searchCheckingLabelTopOffset)
         }
         
         circle.snp.makeConstraints { make in
@@ -96,7 +114,6 @@ final class MagneticViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.center.equalTo(circle)
         }
-        
         seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
@@ -105,7 +122,7 @@ final class MagneticViewController: UIViewController {
         let randomAngle = Double.random(in: 40...90)
         let radians = CGFloat(randomAngle * .pi / 180.0)
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear], animations: {
+        UIView.animate(withDuration: 0.5, delay: .zero, options: [.curveLinear], animations: {
             self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: radians)
         }, completion: { [weak self] _ in
             guard let self else { return }
@@ -131,7 +148,7 @@ final class MagneticViewController: UIViewController {
             circle.backgroundColor = .customNiddleColor
             searchCheckingLabel.text = "Search checking"
             seacrhNiddle.image = Resources.Image.niddle.image
-            UIView.animate(withDuration: 0.3, delay: 0.0, animations: {
+            UIView.animate(withDuration: 0.3, delay: .zero, animations: {
                 self.seacrhNiddle.transform = .identity
             }, completion: { [weak self] _ in
                 guard let self else { return }

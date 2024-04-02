@@ -44,6 +44,10 @@ final class MainViewController: UIViewController {
         addViews()
         setupConstraints()
         setupViewAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNavBar()
     }
     
