@@ -10,11 +10,12 @@ import UIKit
 final class ResultViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
+        tableView.layer.cornerRadius = 8
         tableView.register(TableViewCustomCell.self, forCellReuseIdentifier: String(describing: TableViewCustomCell.self))
         return tableView
     }()
@@ -25,8 +26,8 @@ final class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupNavBar()
         addViews()
+        setupNavBar()
         setupConstraints()
         setupViewModel()
         viewModel.fetchData()
@@ -49,7 +50,6 @@ final class ResultViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        
         customView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
             make.height.equalTo(customView.snp.width).dividedBy(6.48)
@@ -64,18 +64,14 @@ final class ResultViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.kern: -0.41
-        ]
-        let backButton = UIBarButtonItem()
-        backButton.tintColor = .customPurpleLight
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.customizeNavigationBar()
     }
     
     private func setupViewModel() {
         viewModel.onItemsUpdated = { [weak self] in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.reloadTableViewData()
         }
     }
@@ -91,7 +87,6 @@ final class ResultViewController: UIViewController {
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.devices.count)
         return viewModel.devices.count
     }
     

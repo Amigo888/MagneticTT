@@ -11,6 +11,7 @@ final class CustomDetailedView: UIView {
     
     private lazy var typeOfDevice: UILabel = {
         let label = UILabel(
+            text: "Router",
             textColor: .customPurpleLight,
             font: Resources.Font.robotoBold(28)
         )
@@ -50,6 +51,11 @@ final class CustomDetailedView: UIView {
         setupView()
         addViews()
         setupConstraints()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        typeOfDevice.addShadowToText(shadow: NSShadow.shadowCreate())
     }
     
     required init?(coder aDecoder: NSCoder) {

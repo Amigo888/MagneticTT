@@ -16,54 +16,7 @@ final class MainViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var currentWiFiLabel = UILabel(
-        text: "Current Wi-Fi",
-        textColor: .white,
-        font: Resources.Font.robotoRegular(15)
-    )
-    
-    private lazy var wiFiNameLabel: UILabel = {
-        let label = UILabel(
-            text: "WIFI_Name",
-            textColor: .customPurpleLight,
-            font: Resources.Font.robotoBold(28)
-        )
-        label.addShadowToText(shadow: NSShadow.shadowCreate())
-        return label
-    }()
-    
-    private lazy var readyScanLabel = UILabel(
-        text: "Ready to Scan this network",
-        textColor: .customDarkGrey,
-        font: Resources.Font.robotoRegular(17)
-    )
-    
-    private lazy var scanButton: ReusableButton = {
-        let button = ReusableButton(title: "Scan current network")
-        button.addTarget(self, action: #selector(scanNetwork), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var stackViewBackground: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 8
-        view.backgroundColor = .infoWiFiBackground
-        return view
-    }()
-    
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            currentWiFiLabel,
-            wiFiNameLabel,
-            readyScanLabel,
-            scanButton
-        ])
-        stackView.setCustomSpacing(0, after: currentWiFiLabel)
-        stackView.setCustomSpacing(16, after: wiFiNameLabel)
-        stackView.setCustomSpacing(8, after: readyScanLabel)
-        stackView.axis = .vertical
-        return stackView
-    }()
+    private lazy var customMainView = CustomMainView()
     
     private lazy var customFlowLayout: UICollectionViewFlowLayout = {
         let customFlowLayout = UICollectionViewFlowLayout()
@@ -91,6 +44,7 @@ final class MainViewController: UIViewController {
         setupHeader()
         addViews()
         setupConstraints()
+        setupViewAction()
     }
     
     private func setupView() {
@@ -105,8 +59,7 @@ final class MainViewController: UIViewController {
     
     private func addViews() {
         view.addSubview(mainImage)
-        view.addSubview(stackViewBackground)
-        stackViewBackground.addSubview(stackView)
+        view.addSubview(customMainView)
         view.addSubview(collectionView)
     }
     
@@ -116,25 +69,25 @@ final class MainViewController: UIViewController {
             make.height.equalTo(mainImage.snp.width).dividedBy(1.185)
         }
         
-        stackViewBackground.snp.makeConstraints { make in
+        customMainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(198)
             make.top.equalTo(mainImage.snp.bottom).inset(40)
         }
         
-        stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.bottom.equalToSuperview().inset(24)
-        }
-        
-        scanButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
-        
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(stackViewBackground.snp.bottom).offset(16)
+            make.top.equalTo(customMainView.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(36)
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    private func setupViewAction() {
+        customMainView.action = { [weak self] in
+            guard let self else {
+                return
+            }
+            self.scanNetwork()
         }
     }
     

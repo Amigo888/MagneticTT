@@ -21,11 +21,15 @@ final class DetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupNavBar()
         addViews()
         setupConstraints()
         setupViewWithData()
         setupDetailedViewWithData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavBar()
     }
     
     private func setupView() {
@@ -52,13 +56,7 @@ final class DetailedViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.kern: -0.41
-        ]
-        let backButton = UIBarButtonItem()
-        backButton.tintColor = .customPurpleLight
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.customizeNavigationBar()
     }
     
     private func setupViewWithData() {

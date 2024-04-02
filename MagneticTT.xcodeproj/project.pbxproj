@@ -19,6 +19,8 @@
 		5F32932B2BBBFF4100C47208 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32932A2BBBFF4100C47208 /* DetailedViewController.swift */; };
 		5F32932D2BBC04B800C47208 /* CustomDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */; };
 		5F3293302BBC057500C47208 /* DeviceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32932F2BBC057500C47208 /* DeviceInfoCell.swift */; };
+		5F3293322BBC136200C47208 /* UINavigationController+CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293312BBC136200C47208 /* UINavigationController+CustomNavBar.swift */; };
+		5F3293342BBC1AC700C47208 /* CustomMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293332BBC1AC700C47208 /* CustomMainView.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -57,6 +59,8 @@
 		5F32932A2BBBFF4100C47208 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailedView.swift; sourceTree = "<group>"; };
 		5F32932F2BBC057500C47208 /* DeviceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCell.swift; sourceTree = "<group>"; };
+		5F3293312BBC136200C47208 /* UINavigationController+CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+CustomNavBar.swift"; sourceTree = "<group>"; };
+		5F3293332BBC1AC700C47208 /* CustomMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMainView.swift; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				5F3293212BBB631B00C47208 /* ReusableButton.swift */,
 				5F3293272BBBF92600C47208 /* CustomResultView.swift */,
 				5F32932C2BBC04B800C47208 /* CustomDetailedView.swift */,
+				5F3293332BBC1AC700C47208 /* CustomMainView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				5F73FD732BB9DD7B00556D65 /* UIColor+CustomColors.swift */,
 				5F3293032BBB360F00C47208 /* UILabel+Extensions.swift */,
 				5F3293232BBB6B6D00C47208 /* NSShadow+Custom.swift */,
+				5F3293312BBC136200C47208 /* UINavigationController+CustomNavBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,7 +385,9 @@
 				5F32932D2BBC04B800C47208 /* CustomDetailedView.swift in Sources */,
 				5F3293092BBB3E2300C47208 /* NetworkScanViewController.swift in Sources */,
 				5F32931F2BBB5F0400C47208 /* TableViewCustomCell.swift in Sources */,
+				5F3293322BBC136200C47208 /* UINavigationController+CustomNavBar.swift in Sources */,
 				5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */,
+				5F3293342BBC1AC700C47208 /* CustomMainView.swift in Sources */,
 				5FDAF7E52BBAA65B0024778C /* MagneticViewController.swift in Sources */,
 				5F32931C2BBB4AA700C47208 /* ResultViewController.swift in Sources */,
 				5F3293042BBB360F00C47208 /* UILabel+Extensions.swift in Sources */,

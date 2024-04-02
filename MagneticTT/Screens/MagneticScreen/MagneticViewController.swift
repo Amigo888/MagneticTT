@@ -40,9 +40,14 @@ final class MagneticViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupNavBar()
         addViews()
         setupConstaints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        setupNavBar()
     }
     
     private func setupView() {
@@ -51,20 +56,9 @@ final class MagneticViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.kern: -0.41
-        ]
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = "Main"
-        backButton.tintColor = .customPurpleLight
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Resources.Font.robotoRegular(17),
-            .kern: -0.41
-        ]
-        backButton.setTitleTextAttributes(attributes, for: .normal)
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.customizeNavigationBar(
+            backTitle: "Main"
+        )
     }
     
     private func addViews() {
