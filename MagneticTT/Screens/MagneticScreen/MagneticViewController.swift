@@ -41,13 +41,13 @@ final class MagneticViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addViews()
+        setupNavBar()
         setupConstaints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        setupNavBar()
     }
     
     private func setupView() {
