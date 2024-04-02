@@ -134,7 +134,7 @@ final class NetworkScanViewController: UIViewController {
     }
     
     private func setupCornerButtonRadius() {
-        stopButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
+        stopButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / Value.baseTwo
     }
     
     private func setupNavBar() {

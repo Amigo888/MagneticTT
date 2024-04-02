@@ -24,6 +24,7 @@
 		5F32933A2BBC3BCA00C47208 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293392BBC3BCA00C47208 /* ConfigFile.swift */; };
 		5F32933D2BBC5C4800C47208 /* MainCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32933C2BBC5C4800C47208 /* MainCategories.swift */; };
 		5F32933F2BBC5C6E00C47208 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32933E2BBC5C6E00C47208 /* Constraints.swift */; };
+		5F3293412BBC725B00C47208 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293402BBC725B00C47208 /* Values.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -66,6 +67,7 @@
 		5F3293392BBC3BCA00C47208 /* ConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
 		5F32933C2BBC5C4800C47208 /* MainCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategories.swift; sourceTree = "<group>"; };
 		5F32933E2BBC5C6E00C47208 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		5F3293402BBC725B00C47208 /* Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				5F32933C2BBC5C4800C47208 /* MainCategories.swift */,
 				5F32933E2BBC5C6E00C47208 /* Constraints.swift */,
+				5F3293402BBC725B00C47208 /* Values.swift */,
 			);
 			path = Enumarations;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				5F73FD812BB9F67600556D65 /* CustomCell.swift in Sources */,
 				5F3293242BBB6B6D00C47208 /* NSShadow+Custom.swift in Sources */,
 				5F3293282BBBF92600C47208 /* CustomResultView.swift in Sources */,
+				5F3293412BBC725B00C47208 /* Values.swift in Sources */,
 				5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

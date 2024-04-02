@@ -51,9 +51,12 @@ final class CustomCell: UICollectionViewCell {
         layer.masksToBounds = false
         contentView.layer.cornerRadius = 8
         layer.shadowColor = UIColor.cellBackgroundColor?.withAlphaComponent(0.45).cgColor
-        layer.shadowOffset = CGSize(width: -8, height: 8)
-        layer.shadowRadius = 24
-        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(
+            width: -Constraints.Fixed.baseOffset8,
+            height: Constraints.Fixed.baseOffset8
+        )
+        layer.shadowRadius = Constraints.Fixed.baseOffset24
+        layer.shadowOpacity = Float(Value.baseOne)
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale

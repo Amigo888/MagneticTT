@@ -104,19 +104,19 @@ final class MagneticViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.center.equalTo(circle)
         }
-        seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
-        circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        seacrhNiddle.layer.anchorPoint = CGPoint(x: Value.baseOne, y: Value.baseHalfOne)
+        circle.layer.anchorPoint = CGPoint(x: Value.baseHalfOne, y: Value.baseHalfOne)
     }
     
     private func setupCornerButtonRadius() {
-        searchButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / 2
+        searchButton.layer.cornerRadius = Constraints.Calculated.generalButtonHeight / Value.baseTwo
     }
     
     private func animateArrow() {
         let randomAngle = Double.random(in: 40...90)
-        let radians = CGFloat(randomAngle * .pi / 180.0)
+        let radians = CGFloat(randomAngle * .pi / Value.halfOfCircleDegree)
         
-        UIView.animate(withDuration: 0.5, delay: .zero, options: [.curveLinear], animations: {
+        UIView.animate(withDuration: Value.baseHalfOne, delay: .zero, options: [.curveLinear], animations: {
             self.seacrhNiddle.transform = CGAffineTransform(rotationAngle: radians)
         }, completion: { [weak self] _ in
             guard let self else { return }
@@ -142,7 +142,7 @@ final class MagneticViewController: UIViewController {
             circle.backgroundColor = .customNiddleColor
             searchCheckingLabel.text = "Search checking"
             seacrhNiddle.image = Resources.Image.niddle.image
-            UIView.animate(withDuration: 0.3, delay: .zero, animations: {
+            UIView.animate(withDuration: Value.baseZeroThree, delay: .zero, animations: {
                 self.seacrhNiddle.transform = .identity
             }, completion: { [weak self] _ in
                 guard let self else { return }

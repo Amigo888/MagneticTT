@@ -27,7 +27,7 @@ final class ReusableButton: UIButton {
         backgroundColor = .customPurpleLight
         guard let labelText = titleLabel?.text else { return }
         let attributedString = NSMutableAttributedString(string: labelText)
-        attributedString.addAttribute(.kern, value: 0.38, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(.kern, value: 0.38, range: NSRange(location: .zero, length: attributedString.length))
         titleLabel?.attributedText = attributedString
     }
 }

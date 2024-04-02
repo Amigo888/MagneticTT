@@ -55,11 +55,3 @@ enum Constraints {
         static let stackViewSustomSpacing8 = uiscreenHeight / 105.5
     }
 }
-
-enum Value {
-    static let base2: Int = 2
-    static let deviceDiagonal: Double = 5.4
-    static let resultTableViewRowHeight: Double = 54
-    static let detailedTableViewRowHeight: Double = 48
-    static let detailedTableViewCellQuantity: Int = 4
-}
