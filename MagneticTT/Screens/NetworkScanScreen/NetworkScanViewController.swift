@@ -72,12 +72,33 @@ final class NetworkScanViewController: UIViewController {
         return button
     }()
     
+    private var stackViewTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 12.98
+    }
+    
+    private var animationViewTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 11.88
+    }
+    
+    private var stopButtonHeight: CGFloat {
+        return UIScreen.main.bounds.height / 16.88
+    }
+    
+    private var stopButtonBottomOffset: CGFloat {
+        return UIScreen.main.bounds.height / 23.44
+    }
+    
+    private var quantityLabelTopOffset: CGFloat {
+        return UIScreen.main.bounds.height / 26.375
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addViews()
         setupNavBar()
         setupConstraints()
+        setupCornerButtonRadius()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,11 +123,11 @@ final class NetworkScanViewController: UIViewController {
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(65)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(stackViewTopOffset)
         }
         
         animationView.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(71)
+            make.top.equalTo(stackView.snp.bottom).offset(animationViewTopOffset)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(animationView.snp.width)
         }
@@ -116,7 +137,7 @@ final class NetworkScanViewController: UIViewController {
         }
         
         quantityOfDevice.snp.makeConstraints { make in
-            make.top.equalTo(animationView.snp.bottom).offset(32)
+            make.top.equalTo(animationView.snp.bottom).offset(quantityLabelTopOffset)
             make.centerX.equalToSuperview().offset(-60)
         }
         
@@ -127,9 +148,13 @@ final class NetworkScanViewController: UIViewController {
         
         stopButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(36)
+            make.height.equalTo(stopButtonHeight)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(stopButtonBottomOffset)
         }
+    }
+    
+    private func setupCornerButtonRadius() {
+        stopButton.layer.cornerRadius = stopButtonHeight / 2
     }
     
     private func setupNavBar() {

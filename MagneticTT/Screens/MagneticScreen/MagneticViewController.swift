@@ -58,8 +58,7 @@ final class MagneticViewController: UIViewController {
         setupView()
         addViews()
         setupConstaints()
-        print(searcButtonHeight)
-        searchButton.layer.cornerRadius = searcButtonHeight / 2
+        setupCornerButtonRadius()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +115,10 @@ final class MagneticViewController: UIViewController {
         }
         seacrhNiddle.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
         circle.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    }
+    
+    private func setupCornerButtonRadius() {
+        searchButton.layer.cornerRadius = searcButtonHeight / 2
     }
     
     private func animateArrow() {
