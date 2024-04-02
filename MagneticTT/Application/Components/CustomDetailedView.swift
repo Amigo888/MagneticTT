@@ -103,7 +103,7 @@ extension CustomDetailedView: UITableViewDataSource, UITableViewDelegate {
         guard let info = detailedInfo else {
             return UITableViewCell()
         }
-        cell.configure(with: info)
+        cell.configure(with: info, indexPath: indexPath.row)
         return cell
     }
     

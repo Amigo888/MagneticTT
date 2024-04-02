@@ -57,8 +57,22 @@ final class DeviceInfoCell: UITableViewCell {
         }
     }
     
-    func configure(with info: Devices) {
-        categoryLabel.text = "Hi"
-        infoLabel.text = "Dima"
+    func configure(with info: Devices, indexPath: Int) {
+        switch indexPath {
+        case 0:
+            categoryLabel.text = "Connection Type"
+            infoLabel.text = "Wifi"
+        case 1:
+            categoryLabel.text = "IP Address"
+            infoLabel.text = info.ipAddress
+        case 2:
+            categoryLabel.text = "MAC Address"
+            infoLabel.text = info.macAddress
+        case 3:
+            categoryLabel.text = "Hostname"
+            infoLabel.text = info.hostName
+        default:
+            break
+        }
     }
 }
