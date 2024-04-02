@@ -15,6 +15,7 @@
 		5F3293222BBB631B00C47208 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293212BBB631B00C47208 /* ReusableButton.swift */; };
 		5F3293242BBB6B6D00C47208 /* NSShadow+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293232BBB6B6D00C47208 /* NSShadow+Custom.swift */; };
 		5F3293262BBBEB0F00C47208 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293252BBBEB0F00C47208 /* ResultViewModel.swift */; };
+		5F3293282BBBF92600C47208 /* CustomResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293272BBBF92600C47208 /* CustomResultView.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -49,6 +50,7 @@
 		5F3293212BBB631B00C47208 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		5F3293232BBB6B6D00C47208 /* NSShadow+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSShadow+Custom.swift"; sourceTree = "<group>"; };
 		5F3293252BBBEB0F00C47208 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		5F3293272BBBF92600C47208 /* CustomResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResultView.swift; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				5F3293212BBB631B00C47208 /* ReusableButton.swift */,
+				5F3293272BBBF92600C47208 /* CustomResultView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				5F73FD722BB9DCC200556D65 /* Resources.swift in Sources */,
 				5F73FD812BB9F67600556D65 /* CustomCell.swift in Sources */,
 				5F3293242BBB6B6D00C47208 /* NSShadow+Custom.swift in Sources */,
+				5F3293282BBBF92600C47208 /* CustomResultView.swift in Sources */,
 				5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -55,6 +55,7 @@ final class TableViewCustomCell: UITableViewCell {
     
     private func setupCell() {
         backgroundColor = .infoWiFiBackground
+        selectionStyle = .none
     }
     
     private func addViews() {

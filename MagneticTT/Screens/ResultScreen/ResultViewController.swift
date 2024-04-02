@@ -9,12 +9,6 @@ import UIKit
 
 final class ResultViewController: UIViewController {
     
-    private lazy var scanWiFiLabel = UILabel(
-        text: "Scanning Your Wi-Fi",
-        textColor: .white,
-        font: Resources.Font.robotoRegular(15)
-    )
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.delegate = self
@@ -25,6 +19,7 @@ final class ResultViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var customView = CustomResultView()
     private var viewModel = ResultViewModel()
     
     override func viewDidLoad() {
@@ -49,19 +44,21 @@ final class ResultViewController: UIViewController {
     }
     
     private func addViews() {
+        view.addSubview(customView)
         view.addSubview(tableView)
-        view.addSubview(scanWiFiLabel)
     }
     
     private func setupConstraints() {
         
-        scanWiFiLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+        customView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.height.equalTo(customView.snp.width).dividedBy(6.48)
             make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(scanWiFiLabel.snp.bottom).offset(40)
+            make.top.equalTo(customView.snp.bottom).offset(40)
             make.bottom.equalToSuperview()
         }
     }
@@ -94,6 +91,7 @@ final class ResultViewController: UIViewController {
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(viewModel.devices.count)
         return viewModel.devices.count
     }
     
@@ -111,5 +109,9 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
