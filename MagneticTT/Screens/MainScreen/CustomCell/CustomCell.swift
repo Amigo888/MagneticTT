@@ -39,6 +39,17 @@ final class CustomCell: UICollectionViewCell {
         return stackView
     }()
     
+    private var stackViewHorizontalOffset: CGFloat {
+        return UIScreen.main.bounds.width / 21
+    }
+    
+    private var stackViewVerticalOffset: CGFloat {
+        return UIScreen.main.bounds.height / 60
+    }
+    
+    private let currentDevice = ConfigFile.shared.currentDevice
+    private let devices = ConfigFile.shared.smallIphone
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -69,13 +80,18 @@ final class CustomCell: UICollectionViewCell {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(33)
-            make.top.bottom.equalToSuperview().inset(20)
+            if currentDevice.isOneOf(devices) {
+                make.leading.trailing.equalToSuperview().inset(stackViewHorizontalOffset)
+                make.top.bottom.equalToSuperview().inset(stackViewVerticalOffset)
+            } else {
+                make.leading.trailing.equalToSuperview().inset(33)
+                make.top.bottom.equalToSuperview().inset(20)
+            }
         }
         
         categoryImage.snp.makeConstraints { make in
-            make.width.equalTo(31)
-            make.height.equalTo(44)
+            make.height.equalToSuperview().dividedBy(3.18)
+            make.width.equalTo(categoryImage.snp.height).dividedBy(1.32)
         }
     }
     
