@@ -42,7 +42,7 @@ final class CustomDetailedView: UIView {
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
-        tableView.register(DeviceInfoCell.self, forCellReuseIdentifier: String(describing: DeviceInfoCell.self))
+        tableView.register(DeviceInfoCell.self)
         return tableView
     }()
     
@@ -116,12 +116,7 @@ extension CustomDetailedView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: DeviceInfoCell.self),
-            for: indexPath
-        ) as? DeviceInfoCell else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeue(DeviceInfoCell.self)
         guard let info = detailedInfo else {
             return UITableViewCell()
         }

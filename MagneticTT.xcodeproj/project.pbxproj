@@ -26,6 +26,7 @@
 		5F32933F2BBC5C6E00C47208 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32933E2BBC5C6E00C47208 /* Constraints.swift */; };
 		5F3293412BBC725B00C47208 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293402BBC725B00C47208 /* Values.swift */; };
 		5F3293432BBC746300C47208 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293422BBC746300C47208 /* Text.swift */; };
+		5F3293452BBC7FBF00C47208 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3293442BBC7FBF00C47208 /* UITableView+Extensions.swift */; };
 		5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */; };
 		5F73FD3D2BB9D35600556D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */; };
 		5F73FD3F2BB9D35600556D65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FD3E2BB9D35600556D65 /* MainViewController.swift */; };
@@ -70,6 +71,7 @@
 		5F32933E2BBC5C6E00C47208 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		5F3293402BBC725B00C47208 /* Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		5F3293422BBC746300C47208 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		5F3293442BBC7FBF00C47208 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5F73FD372BB9D35600556D65 /* MagneticTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagneticTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F73FD3A2BB9D35600556D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F73FD3C2BB9D35600556D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				5F73FD732BB9DD7B00556D65 /* UIColor+CustomColors.swift */,
 				5F3293032BBB360F00C47208 /* UILabel+Extensions.swift */,
 				5F3293232BBB6B6D00C47208 /* NSShadow+Custom.swift */,
+				5F3293442BBC7FBF00C47208 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				5F3293092BBB3E2300C47208 /* NetworkScanViewController.swift in Sources */,
 				5F3293432BBC746300C47208 /* Text.swift in Sources */,
 				5F32931F2BBB5F0400C47208 /* TableViewCustomCell.swift in Sources */,
+				5F3293452BBC7FBF00C47208 /* UITableView+Extensions.swift in Sources */,
 				5F73FD3B2BB9D35600556D65 /* AppDelegate.swift in Sources */,
 				5F3293342BBC1AC700C47208 /* CustomMainView.swift in Sources */,
 				5FDAF7E52BBAA65B0024778C /* MagneticViewController.swift in Sources */,

@@ -18,7 +18,7 @@ final class ResultViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.layer.cornerRadius = 8
-        tableView.register(TableViewCustomCell.self, forCellReuseIdentifier: String(describing: TableViewCustomCell.self))
+        tableView.register(TableViewCustomCell.self)
         return tableView
     }()
     
@@ -105,12 +105,7 @@ extension ResultViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: TableViewCustomCell.self),
-            for: indexPath
-        ) as? TableViewCustomCell else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeue(TableViewCustomCell.self)
         let device = viewModel.devices[indexPath.row]
         cell.configure(device: device)
         return cell
