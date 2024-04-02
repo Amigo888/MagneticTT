@@ -44,20 +44,33 @@ final class CustomMainView: UIView {
             readyScanLabel,
             scanButton
         ])
-        stackView.setCustomSpacing(0, after: currentWiFiLabel)
-        stackView.setCustomSpacing(16, after: wiFiNameLabel)
-        stackView.setCustomSpacing(8, after: readyScanLabel)
+        stackView.setCustomSpacing(.zero, after: currentWiFiLabel)
+        stackView.setCustomSpacing(UIScreen.main.bounds.height / 52.75, after: wiFiNameLabel)
+        stackView.setCustomSpacing(UIScreen.main.bounds.height / 105.5, after: readyScanLabel)
         stackView.axis = .vertical
         return stackView
     }()
     
     var action: (() -> (Void))?
     
+    private var stackViewHorizontalOffset: CGFloat {
+        return UIScreen.main.bounds.height / 24.375
+    }
+    
+    private var stackViewVerticalOffset: CGFloat {
+        return UIScreen.main.bounds.height / 35.16
+    }
+    
+    private var scanButtonHeight: CGFloat {
+        return UIScreen.main.bounds.height / 16.88
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
         addViews()
         setupConstraints()
+        setupCornerButtonRadius()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,13 +88,17 @@ final class CustomMainView: UIView {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.bottom.equalToSuperview().inset(24)
+            make.leading.trailing.equalToSuperview().inset(stackViewHorizontalOffset)
+            make.top.bottom.equalToSuperview().inset(stackViewVerticalOffset)
         }
         
         scanButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
+            make.height.equalTo(scanButtonHeight)
         }
+    }
+    
+    private func setupCornerButtonRadius() {
+        scanButton.layer.cornerRadius = scanButtonHeight / 2
     }
     
     @objc private func scanButtonTapped() {

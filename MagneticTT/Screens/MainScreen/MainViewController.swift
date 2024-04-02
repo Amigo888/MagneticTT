@@ -32,6 +32,7 @@ final class MainViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: String(describing: CustomCell.self))
         collectionView.backgroundColor = .clear
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         return collectionView
     }()
     
@@ -39,6 +40,10 @@ final class MainViewController: UIViewController {
     
     private var customMainViewTopOffset: CGFloat {
         return UIScreen.main.bounds.height / 21.1
+    }
+    
+    private var collecintionViewHorizontalOffset: CGFloat {
+        return UIScreen.main.bounds.width / 10.8
     }
     
     override func viewDidLoad() {
@@ -86,13 +91,13 @@ final class MainViewController: UIViewController {
         
         customMainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(198)
+            make.height.equalTo(customMainView.snp.width).dividedBy(1.76)
             make.top.equalTo(mainImage.snp.bottom).inset(customMainViewTopOffset)
         }
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(customMainView.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(36)
+            make.leading.trailing.equalToSuperview().inset(collecintionViewHorizontalOffset)
             make.bottom.equalToSuperview()
         }
     }
